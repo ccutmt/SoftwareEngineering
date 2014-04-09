@@ -24,6 +24,12 @@ public class TestCalculator {
 	public void testAddNegativeNumbers() {
 		assertEquals(-27, calc.add(-20, -7));
 	}
+
+
+	@Test
+	public void testSubtraction() {
+		assertEquals(5, calc.sub(10, 5));
+	}
 	
 	@Test
 	public void testMultiplication() {
