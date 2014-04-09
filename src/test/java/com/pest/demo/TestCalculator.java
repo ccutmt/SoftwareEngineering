@@ -16,7 +16,7 @@ public class TestCalculator {
 
 	@Test
 	public void testAddPositiveNumbers() {
-		assertEquals(25, calc.add(20, 5));
+		assertEquals(25, calc.add(25, 5));
 	}
 	
 	@Test
