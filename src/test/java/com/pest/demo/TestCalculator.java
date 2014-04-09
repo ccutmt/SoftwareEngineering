@@ -13,11 +13,6 @@ public class TestCalculator {
 	public void setUp() throws Exception {
 		calc = new Calculator();
 	}
-
-	/*@Test
-	public void testAddPositiveNumbers() {
-		assertEquals(25, calc.add(25, 5));
-	}*/
 	
 	@Test
 	public void testAddNegativeNumbers() {
