@@ -14,14 +14,15 @@ public class TestCalculator {
 		calc = new Calculator();
 	}
 	
+
 	@Test
-	public void testAddNegativeNumbers() {
-		assertEquals(-27, calc.add(-20, -7));
+	public void testAddPositiveNumbers() {
+		assertEquals(25, calc.add(20, 5));
 	}
 
 	@Test
-	public void testSubtraction() {
-		assertEquals(5, calc.sub(10, 5));
+	public void testAddNegativeNumbers() {
+		assertEquals(-27, calc.add(-20, -7));
 	}
 	
 	@Test
