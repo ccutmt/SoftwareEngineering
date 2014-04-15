@@ -12,7 +12,7 @@ public class Game {
 	public static int no_players = 0;
 
 	public Game() {
-		Scanner sc = new Scanner(System.in);
+		/*Scanner sc = new Scanner(System.in);
 		do{
 			print("Enter number of players: ");
 			try {
@@ -24,7 +24,7 @@ public class Game {
 				println("Something went wrong! Please try again.");
 				no_players = -1;
 			}
-		}while(!setNumPlayers(no_players));
+		}while(!setNumPlayers(no_players));*/
 		
 		generateHTMLFiles();
 	}
