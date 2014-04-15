@@ -7,21 +7,32 @@ package com.pest.demo;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.*;
 
 /**
  *
  * @author Christopher
  */
 public class Game {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        generatehtmlFiles();
+    
+    public static Player[] player;
+    public static int no_players = 0;
+    public Game()
+    {
+        
     }
     
-    public static void generatehtmlFiles()
+    public static void main(String[] args) {  
+        Game gm = new Game();
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter number of players: ");
+        no_players = sc.nextInt();
+        
+        setNumPlayers(no_players);
+        generateHTMLFiles();
+    }
+    
+    public static void generateHTMLFiles()
     {
         try {
 
@@ -32,7 +43,7 @@ public class Game {
             writer.write("<html>\n");
             //head
             writer.write("<head>\n");
-            writer.write("<title> Software Engineering Assignment </title>\n");
+            //writer.write("<title> Software Engineering Assignment </title>\n");
             writer.write("</head>\n");
             
             //body
@@ -56,18 +67,6 @@ public class Game {
             writer.write("</body>\n");
             
             writer.write("</html>\n");
-            
-            /*Scanner sc = new Scanner(System.in);
-            System.out.print("Enter an integer ");
-            int x = sc.nextInt();
-
-            for (int i = 0; i < x; i++) {
-                for (int j = 0; j < x; j++) {
-                    writer.write("*");
-                }
-
-                writer.write("");
-            }*/
 
             writer.flush();
             writer.close();
@@ -75,5 +74,18 @@ public class Game {
         } catch (IOException e) {
             System.out.print("Exception");
         }
+    }
+    
+    /*public startGame()
+    {
+        
+    }*/
+    
+    public static boolean setNumPlayers(int n)
+    {
+       if(no_players < 2 || no_players > 8)
+           return false;
+       else
+           return true;
     }
 }
