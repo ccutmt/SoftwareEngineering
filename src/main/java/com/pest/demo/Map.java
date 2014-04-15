@@ -1,9 +1,12 @@
 package com.pest.demo;
 
 public class Map {
-	int size;
+	static int size;
 	
 	boolean setMapSize(int x, int y){
+		if(x < 2 || x > 50)
+			return false;
+		else size = x;
 		return true;
 	}
 	
