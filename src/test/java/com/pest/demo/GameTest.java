@@ -16,6 +16,9 @@ public class GameTest {
 	@Test
 	public void testSetNumPlayers() {
 		assertEquals(true, mygame.setNumPlayers(2));
+		assertEquals(true, mygame.setNumPlayers(8));
+		assertEquals(false, mygame.setNumPlayers(9));
+		assertEquals(false, mygame.setNumPlayers(1));
 	}
 
 }

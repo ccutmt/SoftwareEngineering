@@ -82,7 +82,7 @@ public class Game {
 	 */
 
 	public boolean setNumPlayers(int n) {
-		if (no_players < 2 || no_players > 8)
+		if (n < 2 || n > 8)
 			return false;
 		else
 			return true;
