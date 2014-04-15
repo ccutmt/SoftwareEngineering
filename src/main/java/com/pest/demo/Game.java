@@ -15,7 +15,7 @@ import java.util.*;
  */
 public class Game {
     
-    //public static Player[] player;
+    public static Player[] player;
     public static int no_players = 0;
     public Game()
     {
