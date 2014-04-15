@@ -13,7 +13,7 @@ public class GameTest {
 		game = new Game();
 	}
 	
-	/*@Test
+	@Test
 	public void testGame() {
 		//fail("Not yet implemented");
 	}
@@ -21,26 +21,26 @@ public class GameTest {
 	@Test
 	public void testMain() {
 		//fail("Not yet implemented");
-	}*/
+	}
 
-	/*@Test
+	@Test
 	public void testGenerateHTMLFiles() {
 		assertEquals("","");
-	}*/
+	}
 
 	@Test
 	public void testSetNumPlayers() {
 		//assertEquals(false, game.setNumPlayers(1));
 	}
 
-	/*@Test
+	@Test
 	public void testPrint() {
-		assertEquals("hi", game.print("hi"));
+		//assertEquals("hi", game.print("hi"));
 	}
 
 	@Test
 	public void testPrintln() {
 		assertEquals("hi", "hi");
-	}*/
+	}
 
 }
