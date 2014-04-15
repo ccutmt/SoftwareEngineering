@@ -13,21 +13,19 @@ public class Game {
 
 	public Game() {
 		Scanner sc = new Scanner(System.in);
-		boolean readerror = true;
-		while (readerror) {
+		do{
 			print("Enter number of players: ");
 			try {
 				no_players = sc.nextInt();
-				readerror = false;
 			} catch (NumberFormatException e) {
 				println("Conversion error. Please try again.");
-				readerror = true;
+				no_players = -1;
 			} catch (Exception e) {
 				println("Something went wrong! Please try again.");
-				readerror = true;
+				no_players = -1;
 			}
-		}
-		setNumPlayers(no_players);
+		}while(!setNumPlayers(no_players));
+		
 		generateHTMLFiles();
 	}
 
