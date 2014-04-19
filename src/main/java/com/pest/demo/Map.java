@@ -6,8 +6,8 @@ public class Map {
 	boolean setMapSize(int x, int y){
 		if(x > 50)
 			return false;
-		else if(Game.no_players <= 4 && x < 5)
-			return false;
+		else if(Game.no_players <= 4 && x >= 5)
+			return true;
 		else if(Game.no_players <= 8 && x < 8)
 			return false;
 		else size = x;

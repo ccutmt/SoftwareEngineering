@@ -43,6 +43,13 @@ public class GameTest {
 		assertEquals("test", outContent.toString());
 	}
 	
+	@Test
+	public void testCloseStreams(){
+		mygame.closeStreams();
+		assertEquals(null, mygame.writer);
+	}
+	
+	
 	@After
 	public void cleanUpStreams() {
 	    System.setOut(null);

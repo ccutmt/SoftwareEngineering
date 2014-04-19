@@ -10,10 +10,37 @@ public class Game {
 
 	public Player[] player;
 	public static int no_players = 0;
-
+	public static Map map = new Map();
+	File file = null;
+	FileWriter writer = null;
+	
+	public Game(){
+		initStreams();
+	}
+	
+	private void initStreams(){
+		file = new File("test.html");
+		try{
+			file.createNewFile();
+			writer = new FileWriter(file);
+		}catch (Exception e){
+			print("Exception occured when creating streams");
+		}	
+	}
+	
+	public void closeStreams(){
+		try{
+			writer.close();
+			writer = null;
+		}catch(Exception e){
+			print("Exception occured when closing streams");
+		}
+	}
+	
 	public static void main(String[] args) {
+		Scanner sc;
 		Game gm = new Game();
-		Scanner sc = new Scanner(System.in);
+		sc = new Scanner(System.in);
 		do{
 			gm.print("Enter number of players: ");
 			try {
@@ -21,24 +48,35 @@ public class Game {
 			} catch (NumberFormatException e) {
 				gm.println("Conversion error. Please try again.");
 				sc.next();
-				//no_players = -1;
 			} catch (Exception e) {
 				gm.println("Something went wrong! Please try again.");
 				sc.next();
-				//no_players = -1;
 			}
 		}while(!gm.setNumPlayers(no_players));
 		
+		int mapsize = 0;
+		do{
+			gm.print("Enter map size: ");
+			try {
+				mapsize = sc.nextInt();
+			} catch (NumberFormatException e) {
+				gm.println("Conversion error. Please try again.");
+				sc.next();
+			} catch (Exception e) {
+				gm.println("Something went wrong! Please try again.");
+				sc.next();
+			}
+		}while(!map.setMapSize(mapsize, mapsize));
+		
 		gm.generateHTMLFiles();
+		
+		
 		sc.close();
+		gm.closeStreams();
 	}
 
 	public void generateHTMLFiles() {
 		try {
-
-			File file = new File("test.html");
-			file.createNewFile();
-			FileWriter writer = new FileWriter(file);
 
 			writer.write("<html>\n");
 			// head
@@ -80,7 +118,7 @@ public class Game {
 	 * 
 	 * }
 	 */
-
+	
 	public boolean setNumPlayers(int n) {
 		if (n < 2 || n > 8)
 			return false;
