@@ -9,6 +9,8 @@ enum Terrain {
 	LAND, WATER, TREASURE, UNKNOWN
 };
 
+enum DIRECTION { UP, DOWN, LEFT, RIGHT};
+
 public class Game {
 
 	static Player[] players;
@@ -16,7 +18,6 @@ public class Game {
 	private File files[];
 	public static int no_players = 0;
 	public static Map map = new Map();
-	private boolean gameover = false;
 
 	public void initStreams() {
 		try {
@@ -24,7 +25,6 @@ public class Game {
 			streams = new FileWriter[no_players];
 			for (int i = 0; i < no_players; i++) {
 				files[i] = new File("map_player_" + i + ".html");
-				files[i].createNewFile();
 				streams[i] = new FileWriter(files[i]);
 			}
 		} catch (Exception e) {
@@ -88,6 +88,15 @@ public class Game {
 		}
 		
 		map.generate();
+		for(int i = 0; i < no_players; i++){
+			Random rn = new Random();
+			int xpos = rn.nextInt()%Map.getSize() -1;
+			int ypos = rn.nextInt()%Map.getSize()-1;
+			if(map.getTileType(xpos, ypos) == Terrain.LAND){
+				players[i].setInitialPos(xpos, ypos);
+			}
+		}
+		
 		gm.generateHTMLFiles();
 
 		// Clean up
@@ -98,6 +107,7 @@ public class Game {
 	public void generateHTMLFiles() {
 		try {
 			for (int i = 0; i < no_players; i++) {
+				files[i].createNewFile();
 				streams[i].write("<html>\n");
 				// head
 				streams[i].write("<head>\n");
