@@ -45,6 +45,8 @@ public class GameTest {
 	
 	@Test
 	public void testCloseStreams(){
+		Game.no_players = 2;
+		mygame.initStreams();
 		mygame.closeStreams();
 		for(int i = 0; i < Game.no_players; i++){
 			assertEquals(null, mygame.streams[i]);

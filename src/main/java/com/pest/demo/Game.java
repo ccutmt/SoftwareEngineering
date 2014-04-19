@@ -18,7 +18,7 @@ public class Game {
 	public static Map map = new Map();
 	private boolean gameover = false;
 
-	private void initStreams() {
+	public void initStreams() {
 		try {
 			files = new File[no_players];
 			streams = new FileWriter[no_players];
@@ -29,7 +29,6 @@ public class Game {
 			}
 		} catch (Exception e) {
 			print("Exception occured when creating streams");
-			System.err.println(e);
 		}
 	}
 
