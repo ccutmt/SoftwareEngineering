@@ -2,6 +2,7 @@ package com.pest.demo;
 
 public class Player {
 	Position position;
+	Position initial_pos;
 	Terrain[][] player_map;
 	
 	public Player(){
@@ -11,6 +12,11 @@ public class Player {
 				player_map[i][j] = Terrain.UNKNOWN;
 			}
 		}
+	}
+	
+	public void setInitialPos(int x, int y){
+		initial_pos = new Position(x,y);
+		position = new Position(x,y);
 	}
 	
 	Terrain getPlayerMap(int x, int y){
