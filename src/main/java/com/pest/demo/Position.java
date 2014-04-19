@@ -3,19 +3,24 @@ package com.pest.demo;
 public class Position {
 	private int x,y;
 	
-	void setX(int xpos){
+	Position(int xpos, int ypos){
 		x = xpos;
-	}
-	
-	void setY(int ypos){
 		y = ypos;
 	}
 	
-	int getX(){
+	public void setX(int xpos){
+		x = xpos;
+	}
+	
+	public void setY(int ypos){
+		y = ypos;
+	}
+	
+	public int getX(){
 		return x;
 	}
 	
-	int getY(){
+	public int getY(){
 		return y;
 	}
 }

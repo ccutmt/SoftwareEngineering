@@ -11,26 +11,26 @@ public class Game {
 	public Player[] player;
 	public static int no_players = 0;
 
-	public Game() {
-		/*Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) {
+		Game gm = new Game();
+		Scanner sc = new Scanner(System.in);
 		do{
-			print("Enter number of players: ");
+			gm.print("Enter number of players: ");
 			try {
 				no_players = sc.nextInt();
 			} catch (NumberFormatException e) {
-				println("Conversion error. Please try again.");
-				no_players = -1;
+				gm.println("Conversion error. Please try again.");
+				sc.next();
+				//no_players = -1;
 			} catch (Exception e) {
-				println("Something went wrong! Please try again.");
-				no_players = -1;
+				gm.println("Something went wrong! Please try again.");
+				sc.next();
+				//no_players = -1;
 			}
-		}while(!setNumPlayers(no_players));*/
+		}while(!gm.setNumPlayers(no_players));
 		
-		generateHTMLFiles();
-	}
-
-	public static void main(String[] args) {
-		Game gm = new Game();
+		gm.generateHTMLFiles();
+		sc.close();
 	}
 
 	public void generateHTMLFiles() {
