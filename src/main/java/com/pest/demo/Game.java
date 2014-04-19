@@ -9,29 +9,32 @@ import java.util.*;
 public class Game {
 
 	public Player[] player;
+	FileWriter streams[]; 
+	private File files[];
 	public static int no_players = 0;
 	public static Map map = new Map();
-	File file = null;
-	FileWriter writer = null;
-	
-	public Game(){
-		initStreams();
-	}
 	
 	private void initStreams(){
-		file = new File("test.html");
 		try{
-			file.createNewFile();
-			writer = new FileWriter(file);
+			files = new File[no_players];
+			streams = new FileWriter[no_players];
+			for(int i =0; i<no_players; i++){
+				files[i] = new File("map_player_" + i + ".html");
+				files[i].createNewFile();
+				streams[i] = new FileWriter(files[i]);
+			}
 		}catch (Exception e){
 			print("Exception occured when creating streams");
+			System.err.println(e);
 		}	
 	}
 	
 	public void closeStreams(){
 		try{
-			writer.close();
-			writer = null;
+			for(int i =0; i<no_players; i++){
+				streams[i].close();
+				streams[i] = null;
+			}
 		}catch(Exception e){
 			print("Exception occured when closing streams");
 		}
@@ -53,6 +56,8 @@ public class Game {
 				sc.next();
 			}
 		}while(!gm.setNumPlayers(no_players));
+		
+		gm.initStreams();
 		
 		int mapsize = 0;
 		do{
@@ -77,37 +82,37 @@ public class Game {
 
 	public void generateHTMLFiles() {
 		try {
-
-			writer.write("<html>\n");
+			for(int i = 0; i< no_players; i++){
+			streams[i].write("<html>\n");
 			// head
-			writer.write("<head>\n");
-			// writer.write("<title> Software Engineering Assignment </title>\n");
-			writer.write("</head>\n");
+			streams[i].write("<head>\n");
+			// streams[i].write("<title> Software Engineering Assignment </title>\n");
+			streams[i].write("</head>\n");
 
 			// body
-			writer.write("<body>\n");
+			streams[i].write("<body>\n");
 
 			// table
-			writer.write("<table>");
-			for (int i = 0; i < map.getSize(); i++) {
-				writer.write("<tr>");
-				for (int j = 0; j < map.getSize(); j++) {
-					char type = map.getTileType(i, j);
+			streams[i].write("<table>");
+			for (int m = 0; m < map.getSize(); m++) {
+				streams[i].write("<tr>");
+				for (int n = 0; n < map.getSize(); n++) {
+					char type = map.getTileType(m, n);
 					if(type == 'b')
-						writer.write("<td bgcolor='#0000FF' width='50' height='50'>");
-					else writer.write("<td bgcolor='#00FF00' width='50' height='50'>");
-					writer.write("</td>");
+						streams[i].write("<td bgcolor='#0000FF' width='50' height='50'>");
+					else streams[i].write("<td bgcolor='#00FF00' width='50' height='50'>");
+					streams[i].write("</td>");
 				}
-				writer.write("</tr>");
+				streams[i].write("</tr>");
 			}
-			writer.write("</table>");
+			streams[i].write("</table>");
 
-			writer.write("</body>\n");
+			streams[i].write("</body>\n");
 
-			writer.write("</html>\n");
+			streams[i].write("</html>\n");
 
-			writer.flush();
-			writer.close();
+			streams[i].flush();
+			}
 
 		} catch (IOException e) {
 			System.out.print("Exception");
