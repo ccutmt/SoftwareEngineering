@@ -2,6 +2,20 @@ package com.pest.demo;
 
 public class Player {
 	Position position;
+	Terrain[][] player_map;
+	
+	public Player(){
+		player_map = new Terrain[Map.getSize()][Map.getSize()];
+		for(int i = 0; i < Map.getSize(); i++){
+			for(int j = 0; j < Map.getSize(); j++){
+				player_map[i][j] = Terrain.UNKNOWN;
+			}
+		}
+	}
+	
+	Terrain getPlayerMap(int x, int y){
+		return player_map[x][y];
+	}
 	
 	void move(char direction){
 		switch(direction){

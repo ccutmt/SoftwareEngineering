@@ -5,46 +5,52 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
+enum Terrain {
+	LAND, WATER, TREASURE, UNKNOWN
+};
 
 public class Game {
 
-	public Player[] player;
-	FileWriter streams[]; 
+	static Player[] players;
+	FileWriter streams[];
 	private File files[];
 	public static int no_players = 0;
 	public static Map map = new Map();
-	
-	private void initStreams(){
-		try{
+	private boolean gameover = false;
+
+	private void initStreams() {
+		try {
 			files = new File[no_players];
 			streams = new FileWriter[no_players];
-			for(int i =0; i<no_players; i++){
+			for (int i = 0; i < no_players; i++) {
 				files[i] = new File("map_player_" + i + ".html");
 				files[i].createNewFile();
 				streams[i] = new FileWriter(files[i]);
 			}
-		}catch (Exception e){
+		} catch (Exception e) {
 			print("Exception occured when creating streams");
 			System.err.println(e);
-		}	
+		}
 	}
-	
-	public void closeStreams(){
-		try{
-			for(int i =0; i<no_players; i++){
+
+	public void closeStreams() {
+		try {
+			for (int i = 0; i < no_players; i++) {
 				streams[i].close();
 				streams[i] = null;
 			}
-		}catch(Exception e){
+		} catch (Exception e) {
 			print("Exception occured when closing streams");
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		Scanner sc;
 		Game gm = new Game();
 		sc = new Scanner(System.in);
-		do{
+
+		// Read number of players
+		do {
 			gm.print("Enter number of players: ");
 			try {
 				no_players = sc.nextInt();
@@ -55,12 +61,15 @@ public class Game {
 				gm.println("Something went wrong! Please try again.");
 				sc.next();
 			}
-		}while(!gm.setNumPlayers(no_players));
-		
+		} while (!gm.setNumPlayers(no_players));
+
+		// Initialise streams
 		gm.initStreams();
-		
+
 		int mapsize = 0;
-		do{
+
+		// Read map size
+		do {
 			gm.print("Enter map size: ");
 			try {
 				mapsize = sc.nextInt();
@@ -71,47 +80,73 @@ public class Game {
 				gm.println("Something went wrong! Please try again.");
 				sc.next();
 			}
-		}while(!map.setMapSize(mapsize, mapsize));
+		} while (!map.setMapSize(mapsize, mapsize));
+
+		// Create players
+		players = new Player[no_players];
+		for (int i = 0; i < no_players; i++) {
+			players[i] = new Player();
+		}
+		
 		map.generate();
 		gm.generateHTMLFiles();
-		
-		
+
+		// Clean up
 		sc.close();
 		gm.closeStreams();
 	}
 
 	public void generateHTMLFiles() {
 		try {
-			for(int i = 0; i< no_players; i++){
-			streams[i].write("<html>\n");
-			// head
-			streams[i].write("<head>\n");
-			// streams[i].write("<title> Software Engineering Assignment </title>\n");
-			streams[i].write("</head>\n");
+			for (int i = 0; i < no_players; i++) {
+				streams[i].write("<html>\n");
+				// head
+				streams[i].write("<head>\n");
+				// streams[i].write("<title> Software Engineering Assignment </title>\n");
+				streams[i].write("</head>\n");
 
-			// body
-			streams[i].write("<body>\n");
+				// body
+				streams[i].write("<body>\n");
 
-			// table
-			streams[i].write("<table>");
-			for (int m = 0; m < map.getSize(); m++) {
-				streams[i].write("<tr>");
-				for (int n = 0; n < map.getSize(); n++) {
-					char type = map.getTileType(m, n);
-					if(type == 'b')
-						streams[i].write("<td bgcolor='#0000FF' width='50' height='50'>");
-					else streams[i].write("<td bgcolor='#00FF00' width='50' height='50'>");
-					streams[i].write("</td>");
+				// table
+				streams[i].write("<table>");
+				for (int m = 0; m < Map.getSize(); m++) {
+					streams[i].write("<tr>");
+					for (int n = 0; n < Map.getSize(); n++) {
+						Terrain type = players[i].getPlayerMap(m, n);
+						switch (type) {
+						case WATER: {
+							streams[i]
+									.write("<td bgcolor='#0000FF' width='50' height='50'>");
+							break;
+						}
+						case LAND: {
+							streams[i]
+									.write("<td bgcolor='#00FF00' width='50' height='50'>");
+							break;
+						}
+						case TREASURE: {
+							streams[i]
+									.write("<td bgcolor='#FFFF00' width='50' height='50'>");
+							break;
+						}
+						case UNKNOWN: {
+							streams[i]
+									.write("<td bgcolor='#AAAAAA' width='50' height='50'>");
+							break;
+						}
+						}
+						streams[i].write("</td>");
+					}
+					streams[i].write("</tr>");
 				}
-				streams[i].write("</tr>");
-			}
-			streams[i].write("</table>");
+				streams[i].write("</table>");
 
-			streams[i].write("</body>\n");
+				streams[i].write("</body>\n");
 
-			streams[i].write("</html>\n");
+				streams[i].write("</html>\n");
 
-			streams[i].flush();
+				streams[i].flush();
 			}
 
 		} catch (IOException e) {
@@ -124,12 +159,13 @@ public class Game {
 	 * 
 	 * }
 	 */
-	
+
 	public boolean setNumPlayers(int n) {
 		if (n < 2 || n > 8)
 			return false;
-		else
+		else {
 			return true;
+		}
 	}
 
 	public void print(String toprint) {

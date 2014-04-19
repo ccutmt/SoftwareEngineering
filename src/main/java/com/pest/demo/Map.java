@@ -3,8 +3,9 @@ package com.pest.demo;
 import java.util.Random;
 
 public class Map {
-	private int size;
-	private char[][] tiles;
+	private static int size;
+	
+	private Terrain[][] tiles;
 	
 	public boolean setMapSize(int x, int y){
 		if(x > 50)
@@ -18,22 +19,22 @@ public class Map {
 	}
 	
 	public void generate(){
-		tiles = new char[size][size];
+		tiles = new Terrain[size][size];
 		Random rn = new Random();
 		for(int i = 0; i< size; i++){
 			for(int j = 0; j < size; j++){
 				if(rn.nextInt()%2 == 0)
-					tiles[i][j] = 'b';
-				else tiles[i][j] = 'g';
+					tiles[i][j] = Terrain.WATER;
+				else tiles[i][j] = Terrain.LAND;
 			}
 		}
 	}
 	
-	public char getTileType(int x, int y){
+	public Terrain getTileType(int x, int y){
 		return tiles[x][y];
 	}
 	
-	public int getSize(){
+	public static int getSize(){
 		return size;
 	}
 }
