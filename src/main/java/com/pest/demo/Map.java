@@ -1,25 +1,39 @@
 package com.pest.demo;
 
+import java.util.Random;
+
 public class Map {
-	static int size;
+	private int size;
+	private char[][] tiles;
 	
-	boolean setMapSize(int x, int y){
+	public boolean setMapSize(int x, int y){
 		if(x > 50)
 			return false;
-		else if(Game.no_players <= 4 && x >= 5)
-			return true;
-		else if(Game.no_players <= 8 && x < 8)
+		else if(Game.no_players <= 4 && x < 5)
+			return false;
+		else if(Game.no_players >= 5 && x < 8)
 			return false;
 		else size = x;
-		generate();
 		return true;
 	}
 	
-	void generate(){
-		
+	public void generate(){
+		tiles = new char[size][size];
+		Random rn = new Random();
+		for(int i = 0; i< size; i++){
+			for(int j = 0; j < size; j++){
+				if(rn.nextInt()%2 == 0)
+					tiles[i][j] = 'b';
+				else tiles[i][j] = 'g';
+			}
+		}
 	}
 	
-	char getTileType(int x, int y){
-		return 'a';
+	public char getTileType(int x, int y){
+		return tiles[x][y];
+	}
+	
+	public int getSize(){
+		return size;
 	}
 }
