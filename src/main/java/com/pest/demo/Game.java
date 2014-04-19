@@ -67,7 +67,7 @@ public class Game {
 				sc.next();
 			}
 		}while(!map.setMapSize(mapsize, mapsize));
-		
+		map.generate();
 		gm.generateHTMLFiles();
 		
 		
@@ -88,15 +88,16 @@ public class Game {
 			writer.write("<body>\n");
 
 			// table
-			writer.write("<table style=\"width:300px\">");
-			for (int i = 0; i < 3; i++) {
+			writer.write("<table>");
+			for (int i = 0; i < map.getSize(); i++) {
 				writer.write("<tr>");
-				writer.write("<td>");
-				for (int j = 0; j < 3; j++) {
-					writer.write("*");
+				for (int j = 0; j < map.getSize(); j++) {
+					char type = map.getTileType(i, j);
+					if(type == 'b')
+						writer.write("<td bgcolor='#0000FF' width='50' height='50'>");
+					else writer.write("<td bgcolor='#00FF00' width='50' height='50'>");
+					writer.write("</td>");
 				}
-
-				writer.write("</td>");
 				writer.write("</tr>");
 			}
 			writer.write("</table>");
