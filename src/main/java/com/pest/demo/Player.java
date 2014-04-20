@@ -1,9 +1,9 @@
 package com.pest.demo;
 
 public class Player {
-	Position position;
-	Position initial_pos;
-	Terrain[][] player_map;
+	Position position = null;
+	Position initial_pos = null;
+	Terrain[][] player_map = null;
 	
 	public Player(){
 		player_map = new Terrain[Map.getSize()][Map.getSize()];
