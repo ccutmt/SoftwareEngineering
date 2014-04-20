@@ -23,7 +23,7 @@ public class Map {
 		Random rn = new Random();
 		for(int i = 0; i< size; i++){
 			for(int j = 0; j < size; j++){
-				if(rn.nextInt()%2 == 0)
+				if(rn.nextInt(2) == 0)
 					tiles[i][j] = Terrain.WATER;
 				else tiles[i][j] = Terrain.LAND;
 			}

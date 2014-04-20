@@ -88,13 +88,13 @@ public class Game {
 		}
 		
 		map.generate();
+		Random rn = new Random();
 		for(int i = 0; i < no_players; i++){
-			Random rn = new Random();
-			int xpos = rn.nextInt()%Map.getSize() -1;
-			int ypos = rn.nextInt()%Map.getSize()-1;
+			int xpos = rn.nextInt(Map.getSize());
+			int ypos = rn.nextInt(Map.getSize());
 			if(map.getTileType(xpos, ypos) == Terrain.LAND){
 				players[i].setInitialPos(xpos, ypos);
-			}
+			}else i--;
 		}
 		
 		gm.generateHTMLFiles();
