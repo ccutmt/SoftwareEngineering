@@ -17,39 +17,55 @@ public class Player {
 	public void setInitialPos(int x, int y){
 		initial_pos = new Position(x,y);
 		position = new Position(x,y);
-		player_map[x][y] = Terrain.LAND;
+		System.out.println("Init x: " + x + " " + y);
+		player_map[y][x] = Terrain.LAND;
 	}
 	
 	Terrain getPlayerMap(int x, int y){
-		return player_map[x][y];
+		return player_map[y][x];
 	}
 	
-	void move(char direction){
+	boolean move(char direction){
 		switch(direction){
 		case 'u':
 		case 'U': {
-			position.setX(position.getX() - 1);
-			break;
+			Position newpos = new Position(position.getX(), position.getY()-1);
+			return setPosition(newpos);
 		}
 		case 'l':
 		case 'L':{
-			position.setY(position.getY() + 1);
-			break;
+			Position newpos = new Position(position.getX() - 1, position.getY());
+			return setPosition(newpos);
 		}
 		case 'd':
 		case 'D':{
-			position.setY(position.getY() + 1);
-			break;
+			Position newpos = new Position(position.getX(), position.getY()+1);
+			return setPosition(newpos);
 		}
 		case 'r':
 		case 'R':{
-			position.setX(position.getX() - 1);
-			break;
+			Position newpos = new Position(position.getX() + 1, position.getY());
+			return setPosition(newpos);
+		}
+		default:{
+			return false;
 		}
 		}
 	}
 	
-	boolean setPosition(Position p){
-		return true;
+	private boolean setPosition(Position p){
+		if(p.getX() >= 0 && p.getX() < player_map.length && p.getY() < player_map.length && p.getY() >= 0){
+			position = p;
+			return true;
+		}
+		else return false;
+	}
+	
+	Terrain[][] getPlayerMap(){
+		return player_map;
+	}
+	
+	Position getPos(){
+		return position;
 	}
 }

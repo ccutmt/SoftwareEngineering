@@ -43,25 +43,7 @@ public class GameTest {
 		assertEquals("test", outContent.toString());
 	}
 	
-	@Test
-	public void testInitStreams(){
-		Game.no_players = 2;
-		mygame.initStreams();
-		for(int i = 0; i < Game.no_players; i++){
-			assertNotNull(mygame.streams[i]);
-		}
-	}
-	
-	@Test
-	public void testCloseStreams(){
-		Game.no_players = 2;
-		mygame.initStreams();
-		mygame.closeStreams();
-		for(int i = 0; i < Game.no_players; i++){
-			assertNull(mygame.streams[i]);
-		}
-	}
-	
+		
 	
 	@After
 	public void cleanUpStreams() {

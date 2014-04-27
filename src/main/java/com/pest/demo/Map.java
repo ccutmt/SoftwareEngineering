@@ -31,7 +31,7 @@ public class Map {
 	}
 	
 	public Terrain getTileType(int x, int y){
-		return tiles[x][y];
+		return tiles[y][x];
 	}
 	
 	public static int getSize(){

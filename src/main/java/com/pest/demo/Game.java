@@ -14,34 +14,11 @@ enum DIRECTION { UP, DOWN, LEFT, RIGHT};
 public class Game {
 
 	static Player[] players;
-	FileWriter streams[];
-	private File files[];
 	public static int no_players = 0;
+	public static int turn = 0;
+	public static boolean game_over = false;
 	public static Map map = new Map();
 
-	public void initStreams() {
-		try {
-			files = new File[no_players];
-			streams = new FileWriter[no_players];
-			for (int i = 0; i < no_players; i++) {
-				files[i] = new File("map_player_" + i + ".html");
-				streams[i] = new FileWriter(files[i]);
-			}
-		} catch (Exception e) {
-			print("Exception occured when creating streams");
-		}
-	}
-
-	public void closeStreams() {
-		try {
-			for (int i = 0; i < no_players; i++) {
-				streams[i].close();
-				streams[i] = null;
-			}
-		} catch (Exception e) {
-			print("Exception occured when closing streams");
-		}
-	}
 
 	public static void main(String[] args) {
 		Scanner sc;
@@ -61,9 +38,6 @@ public class Game {
 				sc.next();
 			}
 		} while (!gm.setNumPlayers(no_players));
-
-		// Initialise streams
-		gm.initStreams();
 
 		int mapsize = 0;
 
@@ -99,63 +73,68 @@ public class Game {
 		
 		gm.generateHTMLFiles();
 
+		while(!game_over){
+			gm.println("Player: " + turn);
+			gm.println("Where do you want to go? (u,d,l,r)");
+			while(!players[turn].move(sc.next().charAt(0))){
+				gm.println("Invalid input!\nWhere do you want to go? (u,d,l,r)");
+			}
+			Position temp = players[turn].getPos();
+			players[turn].getPlayerMap()[temp.getY()][temp.getX()] = map.getTileType(temp.getX(), temp.getY());
+			gm.generateHTMLFiles();
+			if(turn < no_players-1)
+				turn++;
+			else turn=0;
+			
+		}
 		// Clean up
 		sc.close();
-		gm.closeStreams();
 	}
 
 	public void generateHTMLFiles() {
+		File f = null;
+		FileWriter fw = null;
 		try {
 			for (int i = 0; i < no_players; i++) {
-				files[i].createNewFile();
-				streams[i].write("<html>\n");
-				// head
-				streams[i].write("<head>\n");
+				f = new File("map_player_" + i + ".html");
+				fw = new FileWriter(f, false);
+				fw.write("<html>\n");
+				fw.write("<head>\n");
 				// streams[i].write("<title> Software Engineering Assignment </title>\n");
-				streams[i].write("</head>\n");
-
-				// body
-				streams[i].write("<body>\n");
-
-				// table
-				streams[i].write("<table>");
+				fw.write("</head>\n");
+				fw.write("<body>\n");
+				fw.write("<table>");
 				for (int m = 0; m < Map.getSize(); m++) {
-					streams[i].write("<tr>");
+					fw.write("<tr>");
 					for (int n = 0; n < Map.getSize(); n++) {
-						Terrain type = players[i].getPlayerMap(m, n);
+						Terrain type = players[i].getPlayerMap(n, m);
 						switch (type) {
 						case WATER: {
-							streams[i]
-									.write("<td bgcolor='#0000FF' width='50' height='50'>");
+							fw.write("<td bgcolor='#0000FF' width='50' height='50'>");
 							break;
 						}
 						case LAND: {
-							streams[i]
-									.write("<td bgcolor='#00FF00' width='50' height='50'>");
+							fw.write("<td bgcolor='#00FF00' width='50' height='50'>");
 							break;
 						}
 						case TREASURE: {
-							streams[i]
-									.write("<td bgcolor='#FFFF00' width='50' height='50'>");
+							fw.write("<td bgcolor='#FFFF00' width='50' height='50'>");
 							break;
 						}
 						case UNKNOWN: {
-							streams[i]
-									.write("<td bgcolor='#AAAAAA' width='50' height='50'>");
+							fw.write("<td bgcolor='#AAAAAA' width='50' height='50'>");
 							break;
 						}
 						}
-						streams[i].write("</td>");
+						fw.write("</td>");
 					}
-					streams[i].write("</tr>");
+					fw.write("</tr>");
 				}
-				streams[i].write("</table>");
-
-				streams[i].write("</body>\n");
-
-				streams[i].write("</html>\n");
-
-				streams[i].flush();
+				fw.write("</table>");
+				fw.write("</body>\n");
+				fw.write("</html>\n");
+				fw.flush();
+				fw.close();
 			}
 
 		} catch (IOException e) {
