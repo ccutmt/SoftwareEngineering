@@ -28,7 +28,7 @@ public class Map {
 				else tiles[i][j] = Terrain.LAND;
 			}
 		}
-		tiles[rn.nextInt()%size][rn.nextInt()%size] = Terrain.TREASURE;
+		tiles[rn.nextInt(size)][rn.nextInt(size)] = Terrain.TREASURE;
 	}
 	
 	public Terrain getTileType(int x, int y){

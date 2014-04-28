@@ -85,6 +85,9 @@ public class Game {
 			}
 			Position temp = players[turn].getPos();
 			players[turn].getPlayerMap()[temp.getY()][temp.getX()] = map.getTileType(temp.getX(), temp.getY());
+                        if(map.getTileType(temp.getX(), temp.getY()) == Terrain.TREASURE)
+                            game_over = true;
+                        
 			gm.generateHTMLFiles();
 			if(turn < no_players-1)
 				turn++;
@@ -135,6 +138,10 @@ public class Game {
 					fw.write("</tr>");
 				}
 				fw.write("</table>");
+                                
+                                if(game_over == true)
+                                    fw.write("<pr>Congratulations!!</pr>");
+                                    
 				fw.write("</body>\n");
 				fw.write("</html>\n");
 				fw.flush();
