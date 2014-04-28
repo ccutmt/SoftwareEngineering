@@ -61,11 +61,15 @@ public class Game {
 			players[i] = new Player();
 		}
 		
+		
+		//set player positions
+		int xpos;
+		int ypos;
 		map.generate();
 		Random rn = new Random();
 		for(int i = 0; i < no_players; i++){
-			int xpos = rn.nextInt(Map.getSize());
-			int ypos = rn.nextInt(Map.getSize());
+			xpos = rn.nextInt(Map.getSize());
+			ypos = rn.nextInt(Map.getSize());
 			if(map.getTileType(xpos, ypos) == Terrain.LAND){
 				players[i].setInitialPos(xpos, ypos);
 			}else i--;

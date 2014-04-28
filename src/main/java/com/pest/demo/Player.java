@@ -17,7 +17,6 @@ public class Player {
 	public void setInitialPos(int x, int y){
 		initial_pos = new Position(x,y);
 		position = new Position(x,y);
-		System.out.println("Init x: " + x + " " + y);
 		player_map[y][x] = Terrain.LAND;
 	}
 	
