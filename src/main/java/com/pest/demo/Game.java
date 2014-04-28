@@ -85,9 +85,12 @@ public class Game {
 			}
 			Position temp = players[turn].getPos();
 			players[turn].getPlayerMap()[temp.getY()][temp.getX()] = map.getTileType(temp.getX(), temp.getY());
-                        if(map.getTileType(temp.getX(), temp.getY()) == Terrain.TREASURE)
-                            game_over = true;
-                        
+			
+            if(map.getTileType(temp.getX(), temp.getY()) == Terrain.TREASURE)
+            	game_over = true;
+            else if((map.getTileType(temp.getX(), temp.getY()) == Terrain.WATER)){
+            	players[turn].resetPosition();
+            }
 			gm.generateHTMLFiles();
 			if(turn < no_players-1)
 				turn++;

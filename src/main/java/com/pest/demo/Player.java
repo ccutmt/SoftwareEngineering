@@ -67,4 +67,8 @@ public class Player {
 	Position getPos(){
 		return position;
 	}
+	
+	void resetPosition(){
+		position = initial_pos;
+	}
 }
