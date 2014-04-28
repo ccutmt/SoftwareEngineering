@@ -133,6 +133,8 @@ public class Game {
 							break;
 						}
 						}
+						if(players[i].getPos().getX() == n && players[i].getPos().getY() == m)
+							fw.write("<img src='player.png' width='50' height='50'/>");
 						fw.write("</td>");
 					}
 					fw.write("</tr>");
