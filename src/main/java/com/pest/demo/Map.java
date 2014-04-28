@@ -21,10 +21,13 @@ public class Map {
 	public void generate(){
 		tiles = new Terrain[size][size];
 		Random rn = new Random();
+		int blue_count = 0;
 		for(int i = 0; i< size; i++){
 			for(int j = 0; j < size; j++){
-				if(rn.nextInt(2) == 0)
+				if(rn.nextInt(2) == 0 && blue_count < size-1){
 					tiles[i][j] = Terrain.WATER;
+					blue_count++;
+				}
 				else tiles[i][j] = Terrain.LAND;
 			}
 		}
