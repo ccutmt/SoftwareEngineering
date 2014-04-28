@@ -9,8 +9,6 @@ enum Terrain {
 	LAND, WATER, TREASURE, UNKNOWN
 };
 
-enum DIRECTION { UP, DOWN, LEFT, RIGHT};
-
 public class Game {
 
 	static Player[] players;
