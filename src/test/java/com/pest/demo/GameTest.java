@@ -42,13 +42,14 @@ public class GameTest {
 		Game.no_players = 2;
 		mygame.setNumPlayers(2);
 		Game.players = new Player[2];
-		Map testmap = new Map();
-		testmap.setMapSize(5, 5);
+		Game.map = new Map();
+		Game.map.setMapSize(5, 5);
 		Game.players[0] = new Player();
 		Game.players[1] = new Player();
+		Game.map.generate();
 		Game.players[0].setInitialPos(0, 0);
 		Game.players[1].setInitialPos(1,1);
-		testmap.generate();
+		
 		mygame.generateHTMLFiles();
 		
 		File p1 = new File("map_player_0.html");
@@ -56,6 +57,22 @@ public class GameTest {
 		
 		assertTrue(p1.exists());
 		assertTrue(p2.exists());
+	}
+	
+	@Test
+	public void testInitPlayers(){
+		Game.no_players = 2;
+		mygame.setNumPlayers(2);
+		Game.players = new Player[2];
+		Game.map = new Map();
+		Game.map.setMapSize(5,5);
+		Game.players[0] = new Player();
+		Game.players[1] = new Player();
+		Game.map.generate();
+		mygame.initPlayers();
+		
+		assertEquals(Game.players[0].getPlayerMap(Game.players[0].getPos().getX(), Game.players[0].getPos().getY()), Terrain.LAND);
+		assertEquals(Game.players[1].getPlayerMap(Game.players[1].getPos().getX(), Game.players[1].getPos().getY()), Terrain.LAND);
 	}
 	
 	@After
