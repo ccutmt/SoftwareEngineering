@@ -38,13 +38,6 @@ public class GameTest {
 	}
 	
 	@Test
-	public void testPrintln(){
-		mygame.println("test");
-		//depends on platform
-		assertEquals("test\r\n", outContent.toString());
-	}
-	
-	@Test
 	public void testGenerateHtml(){
 		Game.no_players = 2;
 		mygame.generateHTMLFiles();
