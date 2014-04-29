@@ -38,13 +38,24 @@ public class GameTest {
 	}
 	
 	@Test
-	public void testGenerateHtml(){
+	public void testGenerateHtml(){		
 		Game.no_players = 2;
+		mygame.setNumPlayers(2);
+		Game.players = new Player[2];
+		Map testmap = new Map();
+		testmap.setMapSize(5, 5);
+		Game.players[0] = new Player();
+		Game.players[1] = new Player();
+		Game.players[0].setInitialPos(0, 0);
+		Game.players[1].setInitialPos(1,1);
+		testmap.generate();
 		mygame.generateHTMLFiles();
+		
 		File p1 = new File("map_player_0.html");
 		File p2 = new File("map_player_1.html");
-		//assertTrue(p1.exists());
-		//assertTrue(p2.exists());
+		
+		assertTrue(p1.exists());
+		assertTrue(p2.exists());
 	}
 	
 	@After
