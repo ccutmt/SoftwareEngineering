@@ -15,6 +15,7 @@ public class PlayerTest {
 	public void setUp() throws Exception {
 		mymap = new Map();
 		mymap.setMapSize(8, 8);
+		mymap.generate();
 		myplayer = new Player();
 	}
 	
@@ -40,6 +41,7 @@ public class PlayerTest {
 	@Test
 	public void testResetPos(){
 		myplayer.setInitialPos(2, 1);
+		myplayer.move('d');
 		myplayer.resetPosition();
 		assertEquals(myplayer.position, myplayer.initial_pos);
 	}
@@ -60,7 +62,7 @@ public class PlayerTest {
 		assertEquals(true,myplayer.move('d'));
 		assertEquals(0,myplayer.position.getX());
 		assertEquals(1, myplayer.position.getY());
-		myplayer.move('u');
+		myplayer.move('U');
 		assertEquals(0,myplayer.position.getX());
 		assertEquals(0, myplayer.position.getY());
 		myplayer.move('r');
