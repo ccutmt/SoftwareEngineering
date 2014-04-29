@@ -54,7 +54,7 @@ public class PlayerTest {
 	@Test
 	public void testMove(){
 		myplayer.setPosition(new Position(0,0));
-		assertEquals(false,myplayer.move('u'));
+		assertEquals(false,myplayer.move('U'));
 		assertEquals(true,myplayer.move('d'));
 		assertEquals(0,myplayer.position.getX());
 		assertEquals(1, myplayer.position.getY());
@@ -67,5 +67,6 @@ public class PlayerTest {
 		myplayer.move('l');
 		assertEquals(0,myplayer.position.getX());
 		assertEquals(0, myplayer.position.getY());
+		assertFalse(myplayer.move('f'));
 	}
 }
