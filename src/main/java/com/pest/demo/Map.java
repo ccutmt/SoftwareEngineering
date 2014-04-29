@@ -5,7 +5,7 @@ import java.util.Random;
 public class Map {
 	private static int size;
 	
-	private Terrain[][] tiles;
+	Terrain[][] tiles;
 	
 	public boolean setMapSize(int x, int y){
 		if(x > 50)

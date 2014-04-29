@@ -16,23 +16,24 @@ public class Game {
 	public static int turn = 0;
 	public static boolean game_over = false;
 	public static Map map = new Map();
-
-
+	public static Game gm;
+	public static Scanner sc;
+	
 	public static void main(String[] args) {
-		Scanner sc;
-		Game gm = new Game();
+		
+		gm = new Game();
 		sc = new Scanner(System.in);
 
 		// Read number of players
 		do {
-			gm.print("Enter number of players: ");
+			System.out.print("Enter number of players: ");
 			try {
 				no_players = sc.nextInt();
 			} catch (NumberFormatException e) {
-				gm.println("Conversion error. Please try again.");
+				System.out.println("Conversion error. Please try again.");
 				sc.next();
 			} catch (Exception e) {
-				gm.println("Something went wrong! Please try again.");
+				System.out.println("Something went wrong! Please try again.");
 				sc.next();
 			}
 		} while (!gm.setNumPlayers(no_players));
@@ -41,14 +42,14 @@ public class Game {
 
 		// Read map size
 		do {
-			gm.print("Enter map size: ");
+			System.out.print("Enter map size: ");
 			try {
 				mapsize = sc.nextInt();
 			} catch (NumberFormatException e) {
-				gm.println("Conversion error. Please try again.");
+				System.out.println("Conversion error. Please try again.");
 				sc.next();
 			} catch (Exception e) {
-				gm.println("Something went wrong! Please try again.");
+				System.out.println("Something went wrong! Please try again.");
 				sc.next();
 			}
 		} while (!map.setMapSize(mapsize, mapsize));
@@ -56,12 +57,17 @@ public class Game {
 		map.generate();
 		gm.initPlayersPos();
 		gm.generateHTMLFiles();
+		gm.gameLoop();
+		// Clean up
+		sc.close();
+	}
 
+	public void gameLoop(){
 		while(!game_over){
-			gm.println("Player: " + turn);
-			gm.println("Where do you want to go? (u,d,l,r)");
+			System.out.println("Player: " + turn);
+			System.out.println("Where do you want to go? (u,d,l,r)");
 			while(!players[turn].move(sc.next().charAt(0))){
-				gm.println("Invalid input!\nWhere do you want to go? (u,d,l,r)");
+				System.out.println("Invalid input!\nWhere do you want to go? (u,d,l,r)");
 			}
 			Position temp = players[turn].getPos();
 			players[turn].getPlayerMap()[temp.getY()][temp.getX()] = map.getTileType(temp.getX(), temp.getY());
@@ -71,16 +77,14 @@ public class Game {
             else if((map.getTileType(temp.getX(), temp.getY()) == Terrain.WATER)){
             	players[turn].resetPosition();
             }
-			gm.generateHTMLFiles();
+			generateHTMLFiles();
 			if(turn < no_players-1)
 				turn++;
 			else turn=0;
 			
 		}
-		// Clean up
-		sc.close();
 	}
-
+	
 	public void initPlayersPos(){
 		//set player positions
 				int xpos;
@@ -170,13 +174,5 @@ public class Game {
 			}
 			return true;
 		}
-	}
-
-	public void print(String toprint) {
-		System.out.print(toprint);
-	}
-
-	public void println(String toprint) {
-		System.out.println(toprint);
 	}
 }
