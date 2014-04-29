@@ -52,15 +52,9 @@ public class Game {
 				sc.next();
 			}
 		} while (!map.setMapSize(mapsize, mapsize));
-
-		// Create players
-		players = new Player[no_players];
-		for (int i = 0; i < no_players; i++) {
-			players[i] = new Player();
-		}
 		
 		map.generate();
-		gm.initPlayers();
+		gm.initPlayersPos();
 		gm.generateHTMLFiles();
 
 		while(!game_over){
@@ -87,7 +81,7 @@ public class Game {
 		sc.close();
 	}
 
-	public void initPlayers(){
+	public void initPlayersPos(){
 		//set player positions
 				int xpos;
 				int ypos;
@@ -169,6 +163,11 @@ public class Game {
 		if (n < 2 || n > 8)
 			return false;
 		else {
+			// Create players
+			players = new Player[no_players];
+			for (int i = 0; i < no_players; i++) {
+				players[i] = new Player();
+			}
 			return true;
 		}
 	}

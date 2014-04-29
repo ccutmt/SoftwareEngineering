@@ -6,15 +6,16 @@ public class Player {
 	Terrain[][] player_map = null;
 	
 	public Player(){
+		
+	}
+	
+	public void setInitialPos(int x, int y){
 		player_map = new Terrain[Map.getSize()][Map.getSize()];
 		for(int i = 0; i < Map.getSize(); i++){
 			for(int j = 0; j < Map.getSize(); j++){
 				player_map[i][j] = Terrain.UNKNOWN;
 			}
 		}
-	}
-	
-	public void setInitialPos(int x, int y){
 		initial_pos = new Position(x,y);
 		position = new Position(x,y);
 		player_map[y][x] = Terrain.LAND;

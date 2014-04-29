@@ -21,6 +21,7 @@ public class PlayerTest {
 
 	@Test
 	public void testPlayer() {
+		myplayer.setInitialPos(0, 0);
 		assertNotNull(myplayer.player_map);
 	}
 
@@ -45,6 +46,7 @@ public class PlayerTest {
 	
 	@Test
 	public void testsetPosition(){
+		myplayer.setInitialPos(0, 0);
 		assertEquals(false, myplayer.setPosition(new Position(8,8)));
 		assertEquals(false, myplayer.setPosition(new Position(8,0)));
 		assertEquals(false, myplayer.setPosition(new Position(0,8)));
@@ -53,7 +55,7 @@ public class PlayerTest {
 
 	@Test
 	public void testMove(){
-		myplayer.setPosition(new Position(0,0));
+		myplayer.setInitialPos(0,0);
 		assertEquals(false,myplayer.move('U'));
 		assertEquals(true,myplayer.move('d'));
 		assertEquals(0,myplayer.position.getX());
@@ -69,4 +71,5 @@ public class PlayerTest {
 		assertEquals(0, myplayer.position.getY());
 		assertFalse(myplayer.move('f'));
 	}
+	
 }
