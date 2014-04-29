@@ -40,6 +40,7 @@ public class GameTest {
 	@Test
 	public void testPrintln(){
 		mygame.println("test");
+		//depends on platform
 		assertEquals("test\r\n", outContent.toString());
 	}
 	
