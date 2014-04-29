@@ -39,11 +39,19 @@ public class GameTest {
 	
 	@Test
 	public void testPrintln(){
-		mygame.print("test");
-		assertEquals("test", outContent.toString());
+		mygame.println("test");
+		assertEquals("test\r\n", outContent.toString());
 	}
 	
-		
+	@Test
+	public void testGenerateHtml(){
+		Game.no_players = 2;
+		mygame.generateHTMLFiles();
+		File p1 = new File("map_player_0.html");
+		File p2 = new File("map_player_1.html");
+		assertTrue(p1.exists());
+		assertTrue(p2.exists());
+	}
 	
 	@After
 	public void cleanUpStreams() {
