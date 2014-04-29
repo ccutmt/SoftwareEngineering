@@ -52,7 +52,7 @@ public class Player {
 		}
 	}
 	
-	private boolean setPosition(Position p){
+	boolean setPosition(Position p){
 		if(p.getX() >= 0 && p.getX() < player_map.length && p.getY() < player_map.length && p.getY() >= 0){
 			position = p;
 			return true;
@@ -66,5 +66,9 @@ public class Player {
 	
 	Position getPos(){
 		return position;
+	}
+	
+	void resetPosition(){
+		position = initial_pos;
 	}
 }
