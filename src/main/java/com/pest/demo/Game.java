@@ -111,7 +111,7 @@ public class Game {
 				// streams[i].write("<title> Software Engineering Assignment </title>\n");
 				fw.write("</head>\n");
 				fw.write("<body>\n");
-                                fw.write("<h1>Player" + i + "map </h1>");
+                                fw.write("<h1>Player " + i + " map</h1>");
 				fw.write("<table>");
 				for (int m = 0; m < Map.getSize(); m++) {
 					fw.write("<tr>");
