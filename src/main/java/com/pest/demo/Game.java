@@ -15,9 +15,11 @@ public class Game {
 	public static int no_players = 0;
 	public static int turn = 0;
 	public static boolean game_over = false;
+	public static boolean last_turn = false;
 	public static Map map = new Map();
 	public static Game gm;
 	public static Scanner sc;
+	public static ArrayList<Integer> winners = new ArrayList<Integer>();
 	
 	public static void main(String[] args) {
 		
@@ -63,7 +65,7 @@ public class Game {
 	}
 
 	public void gameLoop(){
-		while(!game_over){
+		while(!last_turn){
 			System.out.println("Player: " + turn);
 			System.out.println("Where do you want to go? (u,d,l,r)");
 			while(!players[turn].move(sc.next().charAt(0))){
@@ -72,15 +74,22 @@ public class Game {
 			Position temp = players[turn].getPos();
 			players[turn].getPlayerMap()[temp.getY()][temp.getX()] = map.getTileType(temp.getX(), temp.getY());
 			
-            if(map.getTileType(temp.getX(), temp.getY()) == Terrain.TREASURE)
+            if(map.getTileType(temp.getX(), temp.getY()) == Terrain.TREASURE){
             	game_over = true;
+            	winners.add(turn);
+            }
             else if((map.getTileType(temp.getX(), temp.getY()) == Terrain.WATER)){
             	players[turn].resetPosition();
             }
-			generateHTMLFiles();
+			
 			if(turn < no_players-1)
 				turn++;
-			else turn=0;
+			else{
+				if(game_over)
+					last_turn = true;
+				turn=0;
+				generateHTMLFiles();
+			}
 			
 		}
 	}
@@ -143,9 +152,13 @@ public class Game {
 				}
 				fw.write("</table>");
                                 
-                                if(game_over == true)
-                                    fw.write("<pr>Congratulations!!</pr>");
-                                    
+                                if(game_over && turn == 0){
+                                    fw.write("<pr>Congratulations!!");
+                                    for(int z = 0; z < winners.size(); z++){
+                                    	fw.write("<br/>Player " + winners.get(z) + " is a winner!");
+                                    }
+                                    fw.write("</pr>");
+                                }
 				fw.write("</body>\n");
 				fw.write("</html>\n");
 				fw.flush();

@@ -31,10 +31,13 @@ public class GameTest {
 		Game.map = new Map();
 		Game.map.setMapSize(8, 8);
 		Game.map.generate();
+		Game.players[0] = new Player();
+		Game.players[1] = new Player();
+		Game.players[2] = new Player();
 		Game.players[0].setInitialPos(0, 0);
 		Game.players[1].setInitialPos(0,0);
 		Game.players[2].setInitialPos(0, 0);
-		for(int i = 0; i < 8; i++){
+		/*for(int i = 0; i < 8; i++){
 			for(int j=0; j<8;j++){
 				if(Game.map.getTileType(j, i) == Terrain.WATER){
 					Game.players[0].getPlayerMap()[j][i] = Terrain.WATER;
@@ -42,7 +45,7 @@ public class GameTest {
 					Game.players[1].getPlayerMap()[j][i] = Terrain.TREASURE;
 				}
 			}
-		}
+		}*/
 		mygame.generateHTMLFiles();
 		Game.game_over = true;
 		mygame.generateHTMLFiles();
@@ -63,8 +66,8 @@ public class GameTest {
 		Game.map.generate();
 		mygame.initPlayersPos();
 		
-		assertEquals(Game.players[0].getPlayerMap(Game.players[0].getPos().getX(), Game.players[0].getPos().getY()), Terrain.LAND);
-		assertEquals(Game.players[1].getPlayerMap(Game.players[1].getPos().getX(), Game.players[1].getPos().getY()), Terrain.LAND);
+		assertEquals(Game.map.getTileType(Game.players[0].getPos().getX(), Game.players[0].getPos().getY()), Terrain.LAND);
+		assertEquals(Game.map.getTileType(Game.players[1].getPos().getX(), Game.players[1].getPos().getY()), Terrain.LAND);
 	}
 	
 	@Test
@@ -86,6 +89,8 @@ public class GameTest {
 		Game.map.tiles[0][1] = Terrain.LAND;
 		Game.map.tiles[1][1] = Terrain.WATER;
 		mygame.gameLoop();
+		assertEquals(true, Game.game_over);
+		assertEquals(2, Game.winners.size());
 	}
 
 }
