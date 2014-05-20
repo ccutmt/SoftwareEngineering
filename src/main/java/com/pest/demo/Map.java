@@ -1,11 +1,14 @@
 package com.pest.demo;
 
-import java.util.Random;
-
-public class Map {
-	private static int size;
+abstract class Map {
 	
-	Terrain[][] tiles;
+	protected int size;
+	protected static Map map;
+	protected Terrain[][] tiles;
+	
+	protected Map(){
+		
+	}
 	
 	public boolean setMapSize(int x, int y){
 		if(x > 50)
@@ -18,27 +21,13 @@ public class Map {
 		return true;
 	}
 	
-	public void generate(){
-		tiles = new Terrain[size][size];
-		Random rn = new Random();
-		int blue_count = 0;
-		for(int i = 0; i< size; i++){
-			for(int j = 0; j < size; j++){
-				if(rn.nextInt(2) == 0 && blue_count < size-1){
-					tiles[i][j] = Terrain.WATER;
-					blue_count++;
-				}
-				else tiles[i][j] = Terrain.LAND;
-			}
-		}
-		tiles[rn.nextInt(size)][rn.nextInt(size)] = Terrain.TREASURE;
-	}
+	public abstract void generate();
 	
 	public Terrain getTileType(int x, int y){
 		return tiles[y][x];
 	}
 	
-	public static int getSize(){
+	public int getSize(){
 		return size;
 	}
 }

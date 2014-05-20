@@ -9,10 +9,10 @@ public class Player {
 		
 	}
 	
-	public void setInitialPos(int x, int y){
-		player_map = new Terrain[Map.getSize()][Map.getSize()];
-		for(int i = 0; i < Map.getSize(); i++){
-			for(int j = 0; j < Map.getSize(); j++){
+	public void setInitialPos(int x, int y, int mapsize){
+		player_map = new Terrain[mapsize][mapsize];
+		for(int i = 0; i < mapsize; i++){
+			for(int j = 0; j < mapsize; j++){
 				player_map[i][j] = Terrain.UNKNOWN;
 			}
 		}

@@ -46,7 +46,7 @@ public class MapTest {
 				}
 			}
 		}
-		assertEquals(water_count <= Map.getSize()-1, true);
+		assertTrue(water_count <= Map.getSize()-1);
 		assertEquals(1,treasure_count);
 	}
 }
