@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class MapTest {
 
-	Map mymap;
+	/*Map mymap;
 	@Before
 	public void setUp() throws Exception {
 		mymap = new Map();
@@ -48,5 +48,5 @@ public class MapTest {
 		}
 		assertTrue(water_count <= Map.getSize()-1);
 		assertEquals(1,treasure_count);
-	}
+	}*/
 }

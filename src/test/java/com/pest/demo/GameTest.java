@@ -14,6 +14,9 @@ public class GameTest {
 	@Before
 	public void setUp() throws Exception {
 		mygame = new Game();
+		mygame.setNumPlayers(2);
+		Creator c = new Creator();
+		Game.map = c.createMap(1);
 	}
 
 	@Test
@@ -28,15 +31,14 @@ public class GameTest {
 	public void testGenerateHtml(){		
 		Game.no_players = 3;
 		mygame.setNumPlayers(3);
-		Game.map = new Map();
 		Game.map.setMapSize(8, 8);
 		Game.map.generate();
 		Game.players[0] = new Player();
 		Game.players[1] = new Player();
 		Game.players[2] = new Player();
-		Game.players[0].setInitialPos(0, 0);
-		Game.players[1].setInitialPos(0,0);
-		Game.players[2].setInitialPos(0, 0);
+		Game.players[0].setInitialPos(0, 0, 8);
+		Game.players[1].setInitialPos(0,0, 8);
+		Game.players[2].setInitialPos(0, 0, 8);
 		/*for(int i = 0; i < 8; i++){
 			for(int j=0; j<8;j++){
 				if(Game.map.getTileType(j, i) == Terrain.WATER){
@@ -59,11 +61,9 @@ public class GameTest {
 	
 	@Test
 	public void testInitPlayers(){
-		Game.no_players = 2;
-		mygame.setNumPlayers(2);
-		Game.map = new Map();
 		Game.map.setMapSize(5,5);
 		Game.map.generate();
+		Game.no_players = 2;
 		mygame.initPlayersPos();
 		
 		assertEquals(Game.map.getTileType(Game.players[0].getPos().getX(), Game.players[0].getPos().getY()), Terrain.LAND);
@@ -74,12 +74,11 @@ public class GameTest {
 	public void testGameLoop(){
 		mygame.setNumPlayers(2);
 		Game.no_players = 2;
-		Game.map=new Map();
 		Game.map.setMapSize(5,5);
 		Game.map.generate();
 		mygame.initPlayersPos();
-		Game.players[0].setInitialPos(0,0);
-		Game.players[1].setInitialPos(0,0);
+		Game.players[0].setInitialPos(0,0, 5);
+		Game.players[1].setInitialPos(0,0, 5);
 		Game.turn = 0;
 		Game.game_over=false;
 		String inputData = "f\nr\nr\nd\nd\nd\nd\n";

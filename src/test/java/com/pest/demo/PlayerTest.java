@@ -13,7 +13,8 @@ public class PlayerTest {
 
 	@Before
 	public void setUp() throws Exception {
-		mymap = new Map();
+		Creator c = new Creator();
+		mymap = c.createMap(1);
 		mymap.setMapSize(8, 8);
 		mymap.generate();
 		myplayer = new Player();
@@ -22,13 +23,13 @@ public class PlayerTest {
 
 	@Test
 	public void testPlayer() {
-		myplayer.setInitialPos(0, 0);
+		myplayer.setInitialPos(0, 0, 5);
 		assertNotNull(myplayer.player_map);
 	}
 
 	@Test
 	public void testSetInitialPos() {
-		myplayer.setInitialPos(0, 0);
+		myplayer.setInitialPos(0, 0, 5);
 		assertNotNull(myplayer.position);
 		assertNotNull(myplayer.initial_pos);
 		assertEquals(myplayer.position.getX(), 0);
@@ -40,7 +41,7 @@ public class PlayerTest {
 	
 	@Test
 	public void testResetPos(){
-		myplayer.setInitialPos(2, 1);
+		myplayer.setInitialPos(2, 1, 5);
 		myplayer.move('d');
 		myplayer.resetPosition();
 		assertEquals(myplayer.position, myplayer.initial_pos);
@@ -48,7 +49,7 @@ public class PlayerTest {
 	
 	@Test
 	public void testsetPosition(){
-		myplayer.setInitialPos(0, 0);
+		myplayer.setInitialPos(0, 0, 5);
 		assertEquals(false, myplayer.setPosition(new Position(8,8)));
 		assertEquals(false, myplayer.setPosition(new Position(8,0)));
 		assertEquals(false, myplayer.setPosition(new Position(0,8)));
@@ -57,7 +58,7 @@ public class PlayerTest {
 
 	@Test
 	public void testMove(){
-		myplayer.setInitialPos(0,0);
+		myplayer.setInitialPos(0,0,8);
 		assertEquals(false,myplayer.move('U'));
 		assertEquals(true,myplayer.move('d'));
 		assertEquals(0,myplayer.position.getX());
