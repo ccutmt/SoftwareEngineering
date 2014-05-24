@@ -9,7 +9,7 @@ public class HazardousMap extends Map {
 	}
 
 	public static Map getInstance() {
-		if (Map.map == null) {
+		if (Map.map == null || Map.map instanceof SafeMap) {
 			Map.map = new HazardousMap();
 		}
 		return Map.map;
