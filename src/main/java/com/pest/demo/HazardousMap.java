@@ -24,8 +24,8 @@ public class HazardousMap extends Map {
 
 		int blue_count = 0;
 		int green_count = 0;
-		int max_water_limit = (int) 0.35 * (size * size);
-		int max_land_limit = (int) 0.75 * (size * size);
+		int max_water_limit = (int)( 0.35 * (size * size));
+		int max_land_limit = (int) (0.75 * (size * size));
 
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {

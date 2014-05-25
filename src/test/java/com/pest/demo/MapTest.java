@@ -12,9 +12,15 @@ public class MapTest {
 	}
 	
 	@Test
-	public void testMapSizeFewPlayersAllowed(){
+	public void testMapSizeFewPlayersSmallMap(){
 		MapMock map = new MapMock();
-		assertTrue(map.setMapSize(5 , 5, 2));
+		assertTrue(map.setMapSize(5 , 5, 4));
+	}
+	
+	@Test
+	public void testMapSizeFewPlayersBadMap(){
+		MapMock map = new MapMock();
+		assertFalse(map.setMapSize(4 , 4, 2));
 	}
 	
 	@Test
