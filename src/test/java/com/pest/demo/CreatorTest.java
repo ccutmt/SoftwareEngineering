@@ -7,18 +7,16 @@ import org.junit.Test;
 public class CreatorTest {
 
 	@Test
-	public void testGetCreatorSafe() {
+	public void testGetCreatorSafeMap() {
 		Creator c = new Creator();
 		Map m = c.createMap(1);
 		assertTrue(m instanceof SafeMap);
 	}
 	
-	//@Test
-	/*public void testGetCreatorHaz() {
+	@Test
+	public void testGetCreatorHazardousMap() {
 		Creator c = new Creator();
 		Map m = c.createMap(2);
 		assertTrue(m instanceof HazardousMap);
-	}*/
-
-
+	}
 }

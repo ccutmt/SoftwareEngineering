@@ -1,78 +1,155 @@
 package com.pest.demo;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.Before;
 import org.junit.Test;
 
 public class PlayerTest {
-
-	Player myplayer;
-	Map mymap;
 	
-
-	@Before
-	public void setUp() throws Exception {
-		Creator c = new Creator();
-		mymap = c.createMap(1);
-		mymap.setMapSize(8, 8);
-		mymap.generate();
-		myplayer = new Player();
-	}
-	
-
 	@Test
-	public void testPlayer() {
-		myplayer.setInitialPos(0, 0, 5);
-		assertNotNull(myplayer.player_map);
-	}
-
-	@Test
-	public void testSetInitialPos() {
-		myplayer.setInitialPos(0, 0, 5);
-		assertNotNull(myplayer.position);
-		assertNotNull(myplayer.initial_pos);
-		assertEquals(myplayer.position.getX(), 0);
-		assertEquals(myplayer.position.getY(), 0);
-		assertEquals(myplayer.initial_pos.getX(), 0);
-		assertEquals(myplayer.initial_pos.getY(), 0);
-		assertEquals(myplayer.player_map[0][0], Terrain.LAND);
+	public void testInitialPositionIsSet(){
+		Player myPlayer = new Player(3, 2, 5);
+		assertEquals(3, myPlayer.getPos().getX());
+		assertEquals(2, myPlayer.getPos().getY());
 	}
 	
 	@Test
-	public void testResetPos(){
-		myplayer.setInitialPos(2, 1, 5);
-		myplayer.move('d');
-		myplayer.resetPosition();
-		assertEquals(myplayer.position, myplayer.initial_pos);
-	}
-	
-	@Test
-	public void testsetPosition(){
-		myplayer.setInitialPos(0, 0, 5);
-		assertEquals(false, myplayer.setPosition(new Position(8,8)));
-		assertEquals(false, myplayer.setPosition(new Position(8,0)));
-		assertEquals(false, myplayer.setPosition(new Position(0,8)));
-		assertEquals(true, myplayer.setPosition(new Position(0,0)));
+	public void testResetPositionIsEqualToInitialPosition(){
+		Player myPlayer = new Player(2, 1, 5);
+		
+		myPlayer.move('d');
+		myPlayer.resetPosition();
+		
+		assertEquals(2, myPlayer.getPos().getX());
+		assertEquals(1, myPlayer.getPos().getY());
 	}
 
 	@Test
-	public void testMove(){
-		myplayer.setInitialPos(0,0,8);
-		assertEquals(false,myplayer.move('U'));
-		assertEquals(true,myplayer.move('d'));
-		assertEquals(0,myplayer.position.getX());
-		assertEquals(1, myplayer.position.getY());
-		myplayer.move('U');
-		assertEquals(0,myplayer.position.getX());
-		assertEquals(0, myplayer.position.getY());
-		myplayer.move('r');
-		assertEquals(1,myplayer.position.getX());
-		assertEquals(0, myplayer.position.getY());
-		myplayer.move('l');
-		assertEquals(0,myplayer.position.getX());
-		assertEquals(0, myplayer.position.getY());
-		assertFalse(myplayer.move('f'));
+	public void testInitialPositionSeen() {
+		Player myPlayer = new Player(1,1,5);
+		assertTrue(myPlayer.isMapSeen(1, 1));
 	}
 	
+	@Test
+	public void testMoveInvalidCharacter(){
+		Player myPlayer = new Player(2, 1, 5);
+		
+		assertFalse(myPlayer.move('j'));
+	}
+	
+	
+	@Test
+	public void testMoveDownLowerCaseAllowed(){
+		Player myPlayer = new Player(2, 1, 5);
+		
+		assertTrue(myPlayer.move('d'));
+		assertEquals(2, myPlayer.getPos().getX());
+		assertEquals(2, myPlayer.getPos().getY());
+	}
+	
+	@Test
+	public void testMoveDownUpperCaseAllowed(){
+		Player myPlayer = new Player(2, 1, 5);
+		
+		assertTrue(myPlayer.move('D'));
+		assertEquals(2, myPlayer.getPos().getX());
+		assertEquals(2, myPlayer.getPos().getY());
+	}
+	
+	@Test
+	public void testMoveUpLowerCaseAllowed(){
+		Player myPlayer = new Player(2, 1, 5);
+		
+		assertTrue(myPlayer.move('u'));
+		assertEquals(2, myPlayer.getPos().getX());
+		assertEquals(0, myPlayer.getPos().getY());
+	}
+	
+	@Test
+	public void testMoveUpUpperCaseAllowed(){
+		Player myPlayer = new Player(2, 1, 5);
+		
+		assertTrue(myPlayer.move('U'));
+		assertEquals(2, myPlayer.getPos().getX());
+		assertEquals(0, myPlayer.getPos().getY());
+	}
+	
+	@Test
+	public void testMoveLeftLowerCaseAllowed(){
+		Player myPlayer = new Player(2, 1, 5);
+		
+		assertTrue(myPlayer.move('l'));
+		assertEquals(1, myPlayer.getPos().getX());
+		assertEquals(1, myPlayer.getPos().getY());
+	}
+	
+	@Test
+	public void testMoveLeftUpperCaseAllowed(){
+		Player myPlayer = new Player(2, 1, 5);
+		
+		assertTrue(myPlayer.move('L'));
+		assertEquals(1, myPlayer.getPos().getX());
+		assertEquals(1, myPlayer.getPos().getY());
+	}
+	
+	@Test
+	public void testMoveRightLowerCaseAllowed(){
+		Player myPlayer = new Player(2, 1, 5);
+		
+		assertTrue(myPlayer.move('r'));
+		assertEquals(3, myPlayer.getPos().getX());
+		assertEquals(1, myPlayer.getPos().getY());
+	}
+	
+	@Test
+	public void testMoveRightUpperCaseAllowed(){
+		Player myPlayer = new Player(2, 1, 5);
+		
+		assertTrue(myPlayer.move('R'));
+		assertEquals(3, myPlayer.getPos().getX());
+		assertEquals(1, myPlayer.getPos().getY());
+	}
+	
+	@Test
+	public void testMoveDownOutOfMap(){
+		Player myPlayer = new Player(3, 4, 5);
+		
+		assertFalse(myPlayer.move('d'));
+	}
+	
+	@Test
+	public void testMoveUpOutOfMap(){
+		Player myPlayer = new Player(3, 0, 5);
+		
+		assertFalse(myPlayer.move('u'));
+	}
+	
+	@Test
+	public void testMoveLeftOutOfMap(){
+		Player myPlayer = new Player(0, 3, 5);
+		
+		assertFalse(myPlayer.move('l'));
+	}
+	
+	@Test
+	public void testMoveRightOutOfMap(){
+		Player myPlayer = new Player(4, 3, 5);
+		
+		assertFalse(myPlayer.move('r'));
+	}
+	
+	@Test
+	public void testSetMapSeenIsTrue(){
+		Player myPlayer = new Player(4, 3, 5);
+		myPlayer.setMapSeen(1, 1);
+		assertTrue(myPlayer.isMapSeen(1, 1));
+	}
+	
+	@Test
+	public void testUnseenMapIsFalse(){
+		Player myPlayer = new Player(4, 3, 5);
+		assertFalse(myPlayer.isMapSeen(1, 1));
+	}
 }

@@ -4,15 +4,17 @@ import java.util.Random;
 
 public class HazardousMap extends Map {
 
+	private static Map map;
+	
 	private HazardousMap() {
 		super();
 	}
 
-	public static Map getInstance() {
-		if (Map.map == null || Map.map instanceof SafeMap) {
-			Map.map = new HazardousMap();
+	static Map getInstance() {
+		if (HazardousMap.map == null) {
+			HazardousMap.map = new HazardousMap();
 		}
-		return Map.map;
+		return HazardousMap.map;
 	}
 
 	@Override

@@ -2,3 +2,4 @@
 /Jenkins/build/
 /Jenkins/dist/
 /target/
+*.html

@@ -1,33 +1,28 @@
 package com.pest.demo;
 
 abstract class Map {
-	
+
 	protected int size;
-	protected static Map map;
 	protected Terrain[][] tiles;
-	
-	protected Map(){
-		
+
+	protected Map() {
 	}
-	
-	public boolean setMapSize(int x, int y){
-		if(x > 50)
+
+	public boolean setMapSize(int x, int y, int no_players) {
+		if (x > 50 || (no_players <= 4 && x < 5) || (no_players >= 5 && x < 8)) {
 			return false;
-		else if(Game.no_players <= 4 && x < 5)
-			return false;
-		else if(Game.no_players >= 5 && x < 8)
-			return false;
-		else size = x;
+		}
+		size = x;
 		return true;
 	}
-	
+
 	public abstract void generate();
-	
-	public Terrain getTileType(int x, int y){
+
+	public Terrain getTileType(int x, int y) {
 		return tiles[y][x];
 	}
-	
-	public int getSize(){
+
+	public int getSize() {
 		return size;
 	}
 }
