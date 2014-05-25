@@ -13,12 +13,12 @@ public class CreatorTest {
 		assertTrue(m instanceof SafeMap);
 	}
 	
-	@Test
-	public void testGetCreatorHaz() {
+	//@Test
+	/*public void testGetCreatorHaz() {
 		Creator c = new Creator();
 		Map m = c.createMap(2);
 		assertTrue(m instanceof HazardousMap);
-	}
+	}*/
 
 
 }
