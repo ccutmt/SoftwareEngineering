@@ -5,16 +5,16 @@ public class Player {
 	private Position initial_pos = null;
 	private boolean[][] player_map = null;
 
-	public Player(int x, int y, int mapsize) {
+	public Player(int startX, int startY, int mapsize) {
 		player_map = new boolean[mapsize][mapsize];
 		for (int i = 0; i < mapsize; i++) {
 			for (int j = 0; j < mapsize; j++) {
 				player_map[i][j] = false;
 			}
 		}
-		initial_pos = new Position(x, y);
-		position = new Position(x, y);
-		player_map[y][x] = true;
+		initial_pos = new Position(startX, startY);
+		position = new Position(startX, startY);
+		player_map[startY][startX] = true;
 	}
 
 	public boolean isMapSeen(int x, int y) {
@@ -61,6 +61,7 @@ public class Player {
 		if (p.getX() >= 0 && p.getX() < player_map.length
 				&& p.getY() < player_map.length && p.getY() >= 0) {
 			position = p;
+			setMapSeen(p.getX(), p.getY());
 			return true;
 		} else
 			return false;

@@ -7,18 +7,22 @@ public class GameRunner {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		Game gm = null;
-
 		boolean valid = false;
+		
 		do {
-			System.out
-					.print("Do you want to play in collaborative mode? (Y/N)");
+			System.out.print("Do you want to play in collaborative mode? (Y/N)");
 			try {
-				char temp = sc.next().charAt(0);
-				if (temp == 'Y' || temp == 'y') {
-					valid = true;
-					// TODO team code
-				} else if (temp == 'n' || temp == 'N') {
-					valid = true;
+				switch(sc.next().charAt(0)) {
+					case 'Y' : ;
+					case 'y' :
+								valid = true;
+								// TODO team code
+								break;
+					case 'N' : ;
+					case 'n' : 
+								valid = true;
+								break;
+					default : ;
 				}
 			} catch (Exception e) {
 				System.out.println("Something went wrong! Please try again.");
@@ -27,20 +31,13 @@ public class GameRunner {
 		} while (!valid);
 
 		valid = false;
-		int maptype;
 		do {
-			System.out
-					.print("Choose a map type:\n[1] Safe Map\n[2] Hazardous Map\n");
+			System.out.print("Choose a map type:\n[1] Safe Map\n[2] Hazardous Map\n");
 			try {
-				maptype = sc.nextInt();
-				if (maptype > 0 && maptype <= 2) {
-					valid = true;
-					Creator c = new Creator();
-					//set map
-					gm = new Game(c.createMap(maptype));
-				}
+				gm = new Game(new Creator().createMap(sc.nextInt()));
+				valid = true;
 			} catch (Exception e) {
-				System.out.println("Something went wrong! Please try again.");
+				System.err.println("Something went wrong! Please try again.");
 				sc.next();
 			}
 		} while (!valid);
@@ -83,7 +80,7 @@ public class GameRunner {
 	}
 
 	public static void gameLoop(Game gm, Scanner sc) {
-		while (!gm.isLastTurn()) {
+		while (!gm.isEndGame()) {
 			System.out.println("Player: " + gm.getCurrentTurn());
 			System.out.println("Where do you want to go? (u,d,l,r)");
 			while (!gm.setNextMove(sc.next().charAt(0)))

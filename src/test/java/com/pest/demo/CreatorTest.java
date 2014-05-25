@@ -19,4 +19,18 @@ public class CreatorTest {
 		Map m = c.createMap(2);
 		assertTrue(m instanceof HazardousMap);
 	}
+	
+	@Test
+	public void testDefaultMapIsSafeMap() {
+		Creator c = new Creator();
+		Map m = c.createMap();
+		assertTrue(m instanceof SafeMap);
+	}
+	
+	@Test
+	public void testUnknownMapIsSafeMap() {
+		Creator c = new Creator();
+		Map m = c.createMap(5);
+		assertTrue(m instanceof SafeMap);
+	}
 }
