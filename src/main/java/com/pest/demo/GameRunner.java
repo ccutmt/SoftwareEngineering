@@ -8,6 +8,7 @@ public class GameRunner {
 		Scanner sc = new Scanner(System.in);
 		Game gm = null;
 		boolean valid = false;
+                int no_teams = 0;
 		
 		do {
 			System.out.print("Do you want to play in collaborative mode? (Y/N)");
@@ -15,9 +16,14 @@ public class GameRunner {
 				switch(sc.next().charAt(0)) {
 					case 'Y' : ;
 					case 'y' :
+                                        {
+                                            System.out.print("Enter number of teams: ");
+                                            no_teams = sc.nextInt();
+                                            gm.setNumTeams(no_teams);
 								valid = true;
 								// TODO team code
 								break;
+                                        }
 					case 'N' : ;
 					case 'n' : 
 								valid = true;

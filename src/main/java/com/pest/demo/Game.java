@@ -11,6 +11,7 @@ public class Game {
 	private int turn = 0;
 	private boolean game_over = false;
 	private Map map;
+        private ArrayList<Team> team = new ArrayList<Team>();
 	private ArrayList<Integer> winners = new ArrayList<Integer>();
 
 	public Game(Map map) {
@@ -69,11 +70,36 @@ public class Game {
 		players = new Player[n];
 		return true;
 	}
-
+        
 	public int getNumPlayers() {
 		return players.length;
 	}
-
+        
+        public void setNumTeams(int t)
+        {
+            for (int i = 0; i < t; i++)
+            {
+                System.out.print(i);
+                Team tm = new Team();
+                team.add(tm);
+            }
+        }
+        
+        public int getNumTeams()
+        {
+            return team.size();
+        }
+        
+        public void setPlayersInTeams()
+        {
+            for (int i = 0; i < players.length; i++)
+            {
+                Player pl  = players[i];
+                int team_no = (int) (Math.random() * (getNumTeams()));
+                team.get(team_no).AddObserver(pl);
+            }
+        }
+        
 	public boolean setMapSize(int size) {
 		return this.map.setMapSize(size, size, players.length);
 	}
