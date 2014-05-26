@@ -2,8 +2,8 @@ package com.pest.demo;
 
 public interface Subject {
     
-   public void attach(Observer obs);
-   public void deattach(Observer obs);
+   public void AddObserver(Observer obs);
+   public void RemoveObserver(Observer obs);
    public void notifyObservers();
        
 }

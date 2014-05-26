@@ -31,8 +31,17 @@ public class Team implements Subject{
         observers.remove(obs);
     }
     
+    public void Update()
+    {
+        
+    }
+    
+    @Override
     public void notifyObservers()
     {
-        System.out.println("notofy observer!");
+        for(int i = 0; i < observers.size(); i++)
+        {
+            observers.get(i).Update();
+        }
     }
 }
