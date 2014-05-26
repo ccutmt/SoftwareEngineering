@@ -1,6 +1,6 @@
 package com.pest.demo;
 
-public class Player {
+public class Player implements Observer {
 	private Position position = null;
 	private Position initial_pos = null;
 	private boolean[][] player_map = null;
@@ -74,4 +74,11 @@ public class Player {
 	public void resetPosition() {
 		position = initial_pos;
 	}
+        
+    @Override
+        public void Update()
+        {
+            position.getX();
+            position.getY();
+        }
 }
