@@ -37,6 +37,7 @@ public class PlayerTest {
 	public void testMoveInvalidCharacter(){
 		Player myPlayer = new Player(2, 1, 5);
 		
+		myPlayer.setTeam(new Team());
 		assertFalse(myPlayer.move('j'));
 	}
 	
@@ -125,6 +126,7 @@ public class PlayerTest {
 	public void testMoveDownOutOfMap(){
 		Player myPlayer = new Player(3, 4, 5);
 		
+		myPlayer.setTeam(new Team());
 		assertFalse(myPlayer.move('d'));
 	}
 	
@@ -132,6 +134,7 @@ public class PlayerTest {
 	public void testMoveUpOutOfMap(){
 		Player myPlayer = new Player(3, 0, 5);
 		
+		myPlayer.setTeam(new Team());
 		assertFalse(myPlayer.move('u'));
 	}
 	
@@ -139,6 +142,7 @@ public class PlayerTest {
 	public void testMoveLeftOutOfMap(){
 		Player myPlayer = new Player(0, 3, 5);
 		
+		myPlayer.setTeam(new Team());
 		assertFalse(myPlayer.move('l'));
 	}
 	
@@ -146,6 +150,7 @@ public class PlayerTest {
 	public void testMoveRightOutOfMap(){
 		Player myPlayer = new Player(4, 3, 5);
 		
+		myPlayer.setTeam(new Team());
 		assertFalse(myPlayer.move('r'));
 	}
 	
