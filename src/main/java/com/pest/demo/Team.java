@@ -13,6 +13,8 @@ import java.util.*;
 public class Team implements Subject{
     
     private ArrayList<Observer> observers;
+    int latestX;
+    int latestY;
     
     public Team()
     {
@@ -31,10 +33,29 @@ public class Team implements Subject{
         observers.remove(obs);
     }
     
-    public void Update()
+    public int getLatestX()            
+    {
+        return latestX;
+    }
+    
+    public int getLatestY()
+    {
+        return latestY;
+    }
+    
+    public void setLatestX(int x)
+    {
+        latestX = x;
+    }
+    
+    public void setLatestY(int y)
+    {
+        latestY = y;
+    }
+    /*public void Update()
     {
         
-    }
+    }*/
     
     @Override
     public void notifyObservers()
