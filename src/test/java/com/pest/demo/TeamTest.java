@@ -23,6 +23,8 @@ public class TeamTest {
         
         p1.setTeam(team);
         p2.setTeam(team);
+        team.AddObserver(p1);
+        team.AddObserver(p2);
         
         p2.move('d');
         
