@@ -37,6 +37,9 @@ public class Game {
 		}
 
 		Position temp = players[turn].getPos();
+                teams[turn].setLatestX(temp.getX());
+                teams[turn].setLatestY(temp.getY());
+                //players[turn].notifyObservers();
 
 		switch (map.getTileType(temp.getX(), temp.getY())) {
 			case TREASURE:
