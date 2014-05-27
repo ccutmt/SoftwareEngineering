@@ -87,11 +87,34 @@ public class Game {
 	}
 
 	private void setPlayersInTeams() {
-		for (int i = 0; i < players.length; i++) {
+            int number_players = getNumPlayers();
+            int teamno = 0;
+            while(number_players > 0){
+                int player_no = (int) (Math.random() * (getNumPlayers()));
+                if(players[player_no].getTeamNo() == -1){
+                    team.get(teamno).AddObserver(players[player_no]);
+                    players[player_no].setTeamNo(teamno);
+                    number_players--;
+                    teamno++;
+                }
+                if(teamno == team.size()){
+                    teamno = 0;
+                }
+            }
+            
+		/*for (int i = 0; i < team.size(); i++) {
 			Player pl = players[i];
-			int team_no = (int) (Math.random() * (getNumTeams()));
-			team.get(team_no).AddObserver(pl);
-		}
+			int player_no = (int) (Math.random() * (getNumPlayers()));
+                        if(pl.getTeamNo() == -1)
+                        {
+                            team.get(player_no).AddObserver(pl);
+                            pl.setTeamNo(i);
+                        }
+                        else
+                        {
+                            if
+                        }                            
+		}*/
 	}
 
 	public boolean setMapSize(int size) {
@@ -101,6 +124,7 @@ public class Game {
 	public void init() {
 		map.generate();
 		initPlayers();
+                setPlayersInTeams();
 		generateHTMLFiles();
 	}
 
