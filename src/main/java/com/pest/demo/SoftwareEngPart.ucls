@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <interface id="1" language="java" name="com.pest.demo.Subject" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/Subject.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="188" x="1092" y="1585"/>    
+    <position height="-1" width="-1" x="1119" y="1419"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </interface>  
   <class id="2" language="java" name="com.pest.demo.Creator" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/Creator.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="664" y="659"/>    
+    <position height="-1" width="-1" x="928" y="516"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,7 +21,7 @@
   </class>  
   <class id="3" language="java" name="com.pest.demo.Position" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/Position.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="756" y="1644"/>    
+    <position height="-1" width="-1" x="848" y="1396"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </class>  
   <class id="4" language="java" name="com.pest.demo.SafeMapFactory" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/SafeMapFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="191" y="1174"/>    
+    <position height="-1" width="-1" x="1310" y="1417"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </class>  
   <class id="5" language="java" name="com.pest.demo.GameRunner" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/GameRunner.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="179" x="793" y="592"/>    
+    <position height="-1" width="-1" x="1128" y="510"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,7 @@
   </class>  
   <enumeration id="6" language="java" name="com.pest.demo.Terrain" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/Terrain.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1356" y="1446"/>    
+    <position height="-1" width="-1" x="1396" y="1086"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -66,7 +66,7 @@
   </class>  
   <interface id="8" language="java" name="com.pest.demo.Observer" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/Observer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="907" y="1459"/>    
+    <position height="-1" width="-1" x="860" y="1192"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -75,7 +75,7 @@
   </interface>  
   <class id="9" language="java" name="com.pest.demo.Map" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/Map.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1354" y="1153"/>    
+    <position height="-1" width="-1" x="1393" y="808"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -84,7 +84,7 @@
   </class>  
   <class id="10" language="java" name="com.pest.demo.Team" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/Team.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1124" y="1447"/>    
+    <position height="-1" width="-1" x="1119" y="1194"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -93,7 +93,7 @@
   </class>  
   <class id="11" language="java" name="com.pest.demo.Player" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/Player.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="854" y="1195"/>    
+    <position height="-1" width="-1" x="859" y="809"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -102,7 +102,7 @@
   </class>  
   <class id="12" language="java" name="com.pest.demo.SafeMap" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/SafeMap.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="113" x="1267" y="592"/>    
+    <position height="-1" width="-1" x="1316" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -111,7 +111,7 @@
   </class>  
   <class id="13" language="java" name="com.pest.demo.HazardousMapFactory" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/HazardousMapFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="364" y="1174"/>    
+    <position height="-1" width="-1" x="1483" y="1417"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -120,7 +120,7 @@
   </class>  
   <class id="14" language="java" name="com.pest.demo.MapFactory" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/MapFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="275" y="967"/>    
+    <position height="-1" width="-1" x="1398" y="1232"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -129,132 +129,104 @@
   </class>  
   <class id="15" language="java" name="com.pest.demo.HazardousMap" project="pestsuite" 
     file="/pestsuite/src/main/java/com/pest/demo/HazardousMap.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="113" x="1420" y="592"/>    
+    <position height="-1" width="-1" x="1469" y="569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="16">    
-    <bendpoint x="843" y="1374"/>    
+  <realization id="16">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="1"/>  
+  </realization>  
+  <association id="17">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="18" name="observers"/>      
+      <multiplicity id="19" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <association id="20">    
+    <bendpoint x="713" y="806"/>    
+    <bendpoint x="713" y="1397"/>    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="17" name="position"/>      
-      <multiplicity id="18" minimum="0" maximum="1"/>    
+      <attribute id="21" name="position"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="19">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="14"/>  
-  </generalization>  
-  <association id="20">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="21" name="teams"/>      
-      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
+    <display labels="false" multiplicity="true"/>  
   </association>  
   <association id="23">    
-    <bendpoint x="1456" y="897"/>    
-    <end type="SOURCE" refId="15" navigable="false">      
+    <end type="SOURCE" refId="7" navigable="false">      
       <attribute id="24" name="map"/>      
       <multiplicity id="25" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
+    <display labels="false" multiplicity="true"/>  
   </association>  
-  <association id="26">    
-    <bendpoint x="1258" y="991"/>    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="27" name="map"/>      
-      <multiplicity id="28" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="29">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="9"/>  
-  </generalization>  
-  <association id="30">    
-    <bendpoint x="1194" y="1085"/>    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="31" name="map"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="33">    
-    <bendpoint x="900" y="1374"/>    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="8"/>  
-  </realization>  
-  <generalization id="34">    
+  <generalization id="26">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="14"/>  
   </generalization>  
-  <association id="35">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="36" name="observers"/>      
-      <multiplicity id="37" minimum="0" maximum="2147483647"/>    
+  <association id="27">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="28" name="tiles"/>      
+      <multiplicity id="29" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
   </association>  
-  <association id="38">    
+  <generalization id="30">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="14"/>  
+  </generalization>  
+  <association id="31">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="39" name="players"/>      
-      <multiplicity id="40" minimum="0" maximum="2147483647"/>    
+      <attribute id="32" name="teams"/>      
+      <multiplicity id="33" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
   </association>  
-  <generalization id="41">    
-    <bendpoint x="1518" y="924"/>    
+  <association id="34">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="35" name="latest_pos"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
+  </association>  
+  <realization id="37">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="8"/>  
+  </realization>  
+  <generalization id="38">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="9"/>  
+  </generalization>  
+  <generalization id="39">    
     <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="9"/>  
   </generalization>  
-  <association id="42">    
-    <bendpoint x="693" y="1501"/>    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="43" name="initial_pos"/>      
-      <multiplicity id="44" minimum="0" maximum="1"/>    
+  <association id="40">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="41" name="players"/>      
+      <multiplicity id="42" minimum="0" maximum="2147483647"/>    
     </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="false" multiplicity="true"/>  
   </association>  
-  <association id="45">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="46" name="latest_pos"/>      
-      <multiplicity id="47" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="3" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="48">    
+  <association id="43">    
+    <bendpoint x="954" y="1048"/>    
     <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="49" name="team"/>      
-      <multiplicity id="50" minimum="0" maximum="1"/>    
+      <attribute id="44" name="team"/>      
+      <multiplicity id="45" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
+    <display labels="false" multiplicity="true"/>  
   </association>  
-  <association id="51">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="52" name="tiles"/>      
-      <multiplicity id="53" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="54">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="1"/>  
-  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
