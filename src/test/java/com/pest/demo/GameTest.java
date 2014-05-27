@@ -186,4 +186,12 @@ public class GameTest {
 		assertEquals(1, player1.getPos().getX());
 		assertEquals(0, player1.getPos().getY());
 	}
+	
+	@Test
+	public void testTeamCreation(){
+		Game mygame = new Game(new Creator().createMap(1));
+		
+		mygame.setNumPlayers(2);
+		mygame.setNumTeams(2);
+	}
 }

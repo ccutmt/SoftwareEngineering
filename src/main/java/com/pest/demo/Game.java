@@ -11,7 +11,7 @@ public class Game {
 	private int turn = 0;
 	private boolean game_over = false;
 	private Map map;
-	private ArrayList<Team> team = new ArrayList<Team>();
+	private Team[] teams = null;
 	private ArrayList<Integer> winners = new ArrayList<Integer>();
 
 	public Game(Map map) {
@@ -75,15 +75,21 @@ public class Game {
 		return players.length;
 	}
 
-	public void setNumTeams(int t) {
-		for (int i = 0; i < t; i++) {
-			Team tm = new Team();
-			team.add(tm);
+	public boolean setNumTeams(int t) {
+		if(t > getNumPlayers())
+			return false;
+		teams = new Team[t];
+		return true;
+	}
+	
+	private void initTeams(){
+		for (int i = 0; i < getNumTeams(); i++) {
+			teams[i] = new Team();
 		}
 	}
 
 	public int getNumTeams() {
-		return team.size();
+		return teams.length;
 	}
 
 	private void setPlayersInTeams() {
@@ -92,29 +98,15 @@ public class Game {
             while(number_players > 0){
                 int player_no = (int) (Math.random() * (getNumPlayers()));
                 if(players[player_no].getTeamNo() == -1){
-                    team.get(teamno).AddObserver(players[player_no]);
+                    teams[teamno].AddObserver(players[player_no]);
                     players[player_no].setTeamNo(teamno);
                     number_players--;
                     teamno++;
                 }
-                if(teamno == team.size()){
+                if(teamno == teams.length){
                     teamno = 0;
                 }
             }
-            
-		/*for (int i = 0; i < team.size(); i++) {
-			Player pl = players[i];
-			int player_no = (int) (Math.random() * (getNumPlayers()));
-                        if(pl.getTeamNo() == -1)
-                        {
-                            team.get(player_no).AddObserver(pl);
-                            pl.setTeamNo(i);
-                        }
-                        else
-                        {
-                            if
-                        }                            
-		}*/
 	}
 
 	public boolean setMapSize(int size) {
@@ -124,7 +116,8 @@ public class Game {
 	public void init() {
 		map.generate();
 		initPlayers();
-                setPlayersInTeams();
+        initTeams();
+		setPlayersInTeams();
 		generateHTMLFiles();
 	}
 
