@@ -87,7 +87,5 @@ public class Player implements Observer {
     @Override
         public void Update()
         {
-            position.getX();
-            position.getY();
         }
 }

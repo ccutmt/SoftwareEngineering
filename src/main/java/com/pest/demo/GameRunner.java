@@ -93,8 +93,7 @@ public class GameRunner {
 			System.out.println("Player: " + gm.getCurrentTurn());
 			System.out.println("Where do you want to go? (u,d,l,r)");
 			while (!gm.setNextMove(sc.next().charAt(0)))
-				System.out
-						.println("Invalid input!\nWhere do you want to go? (u,d,l,r)");
+				System.out.println("Invalid input!\nWhere do you want to go? (u,d,l,r)");
 		}
 	}
 }
