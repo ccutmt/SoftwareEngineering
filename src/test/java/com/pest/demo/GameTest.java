@@ -230,7 +230,7 @@ public class GameTest {
 		
 		mygame.setNumPlayers(4);
 		mygame.setMapSize(5);
-		mygame.setNumTeams(5);
+		mygame.setNumTeams(4);
 		mygame.init();
 		
 		Player[] players = mygame.getPlayers();
