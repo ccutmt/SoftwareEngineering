@@ -1,6 +1,7 @@
 package com.pest.demo;
 
 import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 public class GameTest {
@@ -84,7 +85,11 @@ public class GameTest {
 				{ Terrain.LAND, Terrain.LAND, Terrain.LAND, Terrain.LAND},
 		};
 		
-		Player[] players = { new Player(1, 0, 4), new Player(0,0,4) };
+		Player player1 = new Player(1, 0, 4);
+		Player player2 = new Player(0,0,4);
+		player1.setTeam(new Team());
+		player2.setTeam(new Team());
+		Player[] players = { player1, player2 };
 		Game mygame = new Game(new MapMock(tiles), players);
 		
 		assertEquals(0, mygame.getCurrentTurn());
@@ -102,7 +107,11 @@ public class GameTest {
 				{ Terrain.LAND, Terrain.LAND, Terrain.LAND, Terrain.LAND},
 		};
 		
-		Player[] players = { new Player(1, 0, 4), new Player(0,0,4) };
+		Player player1 = new Player(1, 0, 4);
+		Player player2 = new Player(0,0,4);
+		player1.setTeam(new Team());
+		player2.setTeam(new Team());
+		Player[] players = { player1, player2 };
 		Game mygame = new Game(new MapMock(tiles), players);
 		
 		mygame.setNextMove('d');
@@ -120,8 +129,13 @@ public class GameTest {
 				{ Terrain.LAND, Terrain.LAND, Terrain.LAND, Terrain.LAND},
 		};
 		
-		Player[] players = { new Player(1, 0, 4), new Player(0,0,4) };
+		Player player1 = new Player(1, 0, 4);
+		Player player2 = new Player(0,0,4);
+		player1.setTeam(new Team());
+		player2.setTeam(new Team());
+		Player[] players = { player1, player2 };
 		Game mygame = new Game(new MapMock(tiles), players);
+		
 		
 		mygame.setNextMove('d');
 		
@@ -136,8 +150,11 @@ public class GameTest {
 				{ Terrain.LAND, Terrain.LAND, Terrain.LAND, Terrain.LAND},
 				{ Terrain.LAND, Terrain.LAND, Terrain.LAND, Terrain.LAND},
 		};
-		
-		Player[] players = { new Player(1, 0, 4), new Player(0,0,4) };
+		Player player1 = new Player(1, 0, 4);
+		Player player2 = new Player(0,0,4);
+		player1.setTeam(new Team());
+		player2.setTeam(new Team());
+		Player[] players = { player1, player2 };
 		Game mygame = new Game(new MapMock(tiles), players);
 		
 		mygame.setNextMove('l');
@@ -158,6 +175,8 @@ public class GameTest {
 		Player player1 = new Player(1, 0, 4);
 		Player player2 = new Player(3,0,4);
 		Player[] players = { player1, player2 };
+		player1.setTeam(new Team());
+		player2.setTeam(new Team());
 		Game mygame = new Game(new MapMock(tiles), players);
 		
 		
@@ -207,13 +226,16 @@ public class GameTest {
 	
 	@Test
 	public void testEveryPlayerHasTeam(){
-		Player player1 = new Player(1, 0, 4);
-		Player player2 = new Player(3,0,4);
-		Player[] players = { player1, player2 };
-		Game mygame = new Game(new Creator().createMap(1), players);
+		Game mygame = new Game(new Creator().createMap(1));
 		
+		mygame.setNumPlayers(4);
+		mygame.setMapSize(5);
+		mygame.setNumTeams(5);
 		mygame.init();
-		assertNotNull(player1.getTeam());
-		assertNotNull(player2.getTeam());
+		
+		Player[] players = mygame.getPlayers();
+		for(int i = 0; i < players.length; i++){
+			assertNotNull(players[i].getTeam());
+		}
 	}
 }
