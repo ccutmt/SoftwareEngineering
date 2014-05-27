@@ -4,6 +4,7 @@ public class Player implements Observer {
 	private Position position = null;
 	private Position initial_pos = null;
 	private boolean[][] player_map = null;
+	private int team_num = -1;
 
 	public Player(int startX, int startY, int mapsize) {
 		player_map = new boolean[mapsize][mapsize];
@@ -15,6 +16,14 @@ public class Player implements Observer {
 		initial_pos = new Position(startX, startY);
 		position = new Position(startX, startY);
 		player_map[startY][startX] = true;
+	}
+	
+	public void setTeamNo(int num){
+		team_num = num;
+	}
+	
+	public int getTeamNo(){
+		return team_num;
 	}
 
 	public boolean isMapSeen(int x, int y) {
