@@ -13,8 +13,7 @@ import java.util.*;
 public class Team implements Subject{
     
     private ArrayList<Observer> observers;
-    int latestX;
-    int latestY;
+    private Position latest_pos;
     
     public Team()
     {
@@ -33,36 +32,21 @@ public class Team implements Subject{
         observers.remove(obs);
     }
     
-    public int getLatestX()            
-    {
-        return latestX;
-    }
-    
-    public int getLatestY()
-    {
-        return latestY;
-    }
-    
-    public void setLatestX(int x)
-    {
-        latestX = x;
-    }
-    
-    public void setLatestY(int y)
-    {
-        latestY = y;
-    }
-    /*public void Update()
-    {
-        
-    }*/
-    
     @Override
     public void notifyObservers()
     {
+    	System.out.println("notifying");
         for(int i = 0; i < observers.size(); i++)
         {
             observers.get(i).Update();
         }
+    }
+    
+    public void setLatest(Position p){
+    	latest_pos = p;
+    }
+    
+    public Position getUpdate(){
+    	return latest_pos;
     }
 }

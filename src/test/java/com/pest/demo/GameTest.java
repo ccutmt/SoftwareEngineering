@@ -191,6 +191,7 @@ public class GameTest {
 	public void testTeamCreation(){
 		Game mygame = new Game(new Creator().createMap(1));
 		
+		mygame.setNumPlayers(5);
 		mygame.setNumTeams(2);
 		assertEquals(2, mygame.getNumTeams());
 	}
@@ -211,5 +212,7 @@ public class GameTest {
 		Game mygame = new Game(new Creator().createMap(1), players);
 		
 		mygame.init();
+		assertNotNull(player1.getTeam());
+		assertNotNull(player2.getTeam());
 	}
 }

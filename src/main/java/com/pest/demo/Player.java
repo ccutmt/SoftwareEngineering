@@ -4,7 +4,7 @@ public class Player implements Observer {
 	private Position position = null;
 	private Position initial_pos = null;
 	private boolean[][] player_map = null;
-	private int team_num = -1;
+	private Team team = null;
 
 	public Player(int startX, int startY, int mapsize) {
 		player_map = new boolean[mapsize][mapsize];
@@ -17,19 +17,19 @@ public class Player implements Observer {
 		position = new Position(startX, startY);
 		player_map[startY][startX] = true;
 	}
-	
-	public void setTeamNo(int num){
-		team_num = num;
+
+	public void setTeam(Team s) {
+		team = s;
 	}
-	
-	public int getTeamNo(){
-		return team_num;
+
+	public Team getTeam() {
+		return team;
 	}
 
 	public boolean isMapSeen(int x, int y) {
 		return player_map[y][x];
 	}
-	
+
 	public void setMapSeen(int x, int y) {
 		player_map[y][x] = true;
 	}
@@ -71,6 +71,8 @@ public class Player implements Observer {
 				&& p.getY() < player_map.length && p.getY() >= 0) {
 			position = p;
 			setMapSeen(p.getX(), p.getY());
+			team.setLatest(p);
+			team.notifyObservers();
 			return true;
 		} else
 			return false;
@@ -83,9 +85,10 @@ public class Player implements Observer {
 	public void resetPosition() {
 		position = initial_pos;
 	}
-        
-    @Override
-        public void Update()
-        {
-        }
+
+	@Override
+	public void Update() {
+		Position temp = team.getUpdate();
+		setMapSeen(temp.getX(), temp.getY());
+	}
 }

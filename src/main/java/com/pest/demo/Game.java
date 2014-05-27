@@ -22,8 +22,8 @@ public class Game {
 		this(map);
 		this.players = players;
 	}
-	
-	public Player[] getPlayers(){
+
+	public Player[] getPlayers() {
 		return players;
 	}
 
@@ -41,9 +41,6 @@ public class Game {
 		}
 
 		Position temp = players[turn].getPos();
-                teams[turn].setLatestX(temp.getX());
-                teams[turn].setLatestY(temp.getY());
-                //players[turn].notifyObservers();
 
 		switch (map.getTileType(temp.getX(), temp.getY())) {
 			case TREASURE:
@@ -83,13 +80,13 @@ public class Game {
 	}
 
 	public boolean setNumTeams(int t) {
-		if(t > getNumPlayers())
+		if (t > getNumPlayers())
 			return false;
 		teams = new Team[t];
 		return true;
 	}
-	
-	private void initTeams(){
+
+	private void initTeams() {
 		for (int i = 0; i < getNumTeams(); i++) {
 			teams[i] = new Team();
 		}
@@ -100,20 +97,20 @@ public class Game {
 	}
 
 	private void setPlayersInTeams() {
-            int number_players = getNumPlayers();
-            int teamno = 0;
-            while(number_players > 0){
-                int player_no = (int) (Math.random() * (getNumPlayers()));
-                if(players[player_no].getTeamNo() == -1){
-                    teams[teamno].AddObserver(players[player_no]);
-                    players[player_no].setTeamNo(teamno);
-                    number_players--;
-                    teamno++;
-                }
-                if(teamno == teams.length){
-                    teamno = 0;
-                }
-            }
+		int number_players = getNumPlayers();
+		int teamno = 0;
+		while (number_players > 0) {
+			int player_no = (int) (Math.random() * (getNumPlayers()));
+			if (players[player_no].getTeam() == null) {
+				teams[teamno].AddObserver(players[player_no]);
+				players[player_no].setTeam(teams[teamno]);
+				number_players--;
+				teamno++;
+			}
+			if (teamno == teams.length) {
+				teamno = 0;
+			}
+		}
 	}
 
 	public boolean setMapSize(int size) {
@@ -123,11 +120,19 @@ public class Game {
 	public void init() {
 		map.generate();
 		initPlayers();
-        initTeams();
+		initTeams();
 		setPlayersInTeams();
+		shareStart();
 		generateHTMLFiles();
 	}
 
+	private void shareStart(){
+		for(int i = 0; i < players.length; i++){
+			players[i].getTeam().setLatest(players[i].getPos());
+			players[i].getTeam().notifyObservers();
+		}
+	}
+	
 	private void initPlayers() {
 		int xpos;
 		int ypos;
