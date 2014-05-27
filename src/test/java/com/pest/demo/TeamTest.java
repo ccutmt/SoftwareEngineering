@@ -14,7 +14,8 @@ import static org.junit.Assert.*;
 
 public class TeamTest {
     
-    public void testTeam()
+    @Test
+    public void testOtherPlayerSeenonMap()
     {
         Team team = new Team();
         Player p1 = new Player(0,1,5);
