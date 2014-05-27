@@ -19,6 +19,7 @@ public class PlayerTest {
 	public void testResetPositionIsEqualToInitialPosition(){
 		Player myPlayer = new Player(2, 1, 5);
 		
+		myPlayer.setTeam(new Team());
 		myPlayer.move('d');
 		myPlayer.resetPosition();
 		
@@ -44,6 +45,7 @@ public class PlayerTest {
 	public void testMoveDownLowerCaseAllowed(){
 		Player myPlayer = new Player(2, 1, 5);
 		
+		myPlayer.setTeam(new Team());
 		assertTrue(myPlayer.move('d'));
 		assertEquals(2, myPlayer.getPos().getX());
 		assertEquals(2, myPlayer.getPos().getY());
@@ -53,6 +55,7 @@ public class PlayerTest {
 	public void testMoveDownUpperCaseAllowed(){
 		Player myPlayer = new Player(2, 1, 5);
 		
+		myPlayer.setTeam(new Team());
 		assertTrue(myPlayer.move('D'));
 		assertEquals(2, myPlayer.getPos().getX());
 		assertEquals(2, myPlayer.getPos().getY());
@@ -62,6 +65,7 @@ public class PlayerTest {
 	public void testMoveUpLowerCaseAllowed(){
 		Player myPlayer = new Player(2, 1, 5);
 		
+		myPlayer.setTeam(new Team());
 		assertTrue(myPlayer.move('u'));
 		assertEquals(2, myPlayer.getPos().getX());
 		assertEquals(0, myPlayer.getPos().getY());
@@ -71,6 +75,7 @@ public class PlayerTest {
 	public void testMoveUpUpperCaseAllowed(){
 		Player myPlayer = new Player(2, 1, 5);
 		
+		myPlayer.setTeam(new Team());
 		assertTrue(myPlayer.move('U'));
 		assertEquals(2, myPlayer.getPos().getX());
 		assertEquals(0, myPlayer.getPos().getY());
@@ -80,6 +85,7 @@ public class PlayerTest {
 	public void testMoveLeftLowerCaseAllowed(){
 		Player myPlayer = new Player(2, 1, 5);
 		
+		myPlayer.setTeam(new Team());
 		assertTrue(myPlayer.move('l'));
 		assertEquals(1, myPlayer.getPos().getX());
 		assertEquals(1, myPlayer.getPos().getY());
@@ -89,6 +95,7 @@ public class PlayerTest {
 	public void testMoveLeftUpperCaseAllowed(){
 		Player myPlayer = new Player(2, 1, 5);
 		
+		myPlayer.setTeam(new Team());
 		assertTrue(myPlayer.move('L'));
 		assertEquals(1, myPlayer.getPos().getX());
 		assertEquals(1, myPlayer.getPos().getY());
@@ -98,6 +105,7 @@ public class PlayerTest {
 	public void testMoveRightLowerCaseAllowed(){
 		Player myPlayer = new Player(2, 1, 5);
 		
+		myPlayer.setTeam(new Team());
 		assertTrue(myPlayer.move('r'));
 		assertEquals(3, myPlayer.getPos().getX());
 		assertEquals(1, myPlayer.getPos().getY());
@@ -107,6 +115,7 @@ public class PlayerTest {
 	public void testMoveRightUpperCaseAllowed(){
 		Player myPlayer = new Player(2, 1, 5);
 		
+		myPlayer.setTeam(new Team());
 		assertTrue(myPlayer.move('R'));
 		assertEquals(3, myPlayer.getPos().getX());
 		assertEquals(1, myPlayer.getPos().getY());

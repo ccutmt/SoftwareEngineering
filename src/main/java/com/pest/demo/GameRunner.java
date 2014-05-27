@@ -83,6 +83,7 @@ public class GameRunner {
 		} while (!valid);
 
 		gm.init();
+		
 		gameLoop(gm, sc);
 		// Clean up
 		sc.close();

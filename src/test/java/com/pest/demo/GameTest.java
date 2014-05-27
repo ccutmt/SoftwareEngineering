@@ -160,6 +160,7 @@ public class GameTest {
 		Player[] players = { player1, player2 };
 		Game mygame = new Game(new MapMock(tiles), players);
 		
+		
 		mygame.setNextMove('d');
 		mygame.setNextMove('d');
 		
