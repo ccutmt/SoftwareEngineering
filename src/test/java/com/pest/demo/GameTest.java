@@ -191,7 +191,25 @@ public class GameTest {
 	public void testTeamCreation(){
 		Game mygame = new Game(new Creator().createMap(1));
 		
-		mygame.setNumPlayers(2);
 		mygame.setNumTeams(2);
+		assertEquals(2, mygame.getNumTeams());
+	}
+	
+	@Test
+	public void testSetTeamGreaterThanPlayers(){
+		Game mygame = new Game(new Creator().createMap(1));
+		
+		mygame.setNumPlayers(2);
+		assertFalse(mygame.setNumTeams(5));
+	}
+	
+	@Test
+	public void testEveryPlayerHasTeam(){
+		Player player1 = new Player(1, 0, 4);
+		Player player2 = new Player(3,0,4);
+		Player[] players = { player1, player2 };
+		Game mygame = new Game(new Creator().createMap(1), players);
+		
+		mygame.init();
 	}
 }

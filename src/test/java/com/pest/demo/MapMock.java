@@ -13,5 +13,4 @@ public class MapMock extends Map {
 	public void generate() {
 		//do nothing;
 	}
-
 }

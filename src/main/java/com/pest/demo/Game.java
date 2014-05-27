@@ -22,6 +22,10 @@ public class Game {
 		this(map);
 		this.players = players;
 	}
+	
+	public Player[] getPlayers(){
+		return players;
+	}
 
 	public boolean isEndGame() {
 		return (game_over && turn == 0);
