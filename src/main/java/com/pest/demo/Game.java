@@ -11,13 +11,13 @@ public class Game {
 	private int turn = 0;
 	private boolean game_over = false;
 	private Map map;
-        private ArrayList<Team> team = new ArrayList<Team>();
+	private ArrayList<Team> team = new ArrayList<Team>();
 	private ArrayList<Integer> winners = new ArrayList<Integer>();
 
 	public Game(Map map) {
 		this.map = map;
 	}
-	
+
 	public Game(Map map, Player[] players) {
 		this(map);
 		this.players = players;
@@ -70,36 +70,30 @@ public class Game {
 		players = new Player[n];
 		return true;
 	}
-        
+
 	public int getNumPlayers() {
 		return players.length;
 	}
-        
-        public void setNumTeams(int t)
-        {
-            for (int i = 0; i < t; i++)
-            {
-                System.out.print(i);
-                Team tm = new Team();
-                team.add(tm);
-            }
-        }
-        
-        public int getNumTeams()
-        {
-            return team.size();
-        }
-        
-        public void setPlayersInTeams()
-        {
-            for (int i = 0; i < players.length; i++)
-            {
-                Player pl  = players[i];
-                int team_no = (int) (Math.random() * (getNumTeams()));
-                team.get(team_no).AddObserver(pl);
-            }
-        }
-        
+
+	public void setNumTeams(int t) {
+		for (int i = 0; i < t; i++) {
+			Team tm = new Team();
+			team.add(tm);
+		}
+	}
+
+	public int getNumTeams() {
+		return team.size();
+	}
+
+	private void setPlayersInTeams() {
+		for (int i = 0; i < players.length; i++) {
+			Player pl = players[i];
+			int team_no = (int) (Math.random() * (getNumTeams()));
+			team.get(team_no).AddObserver(pl);
+		}
+	}
+
 	public boolean setMapSize(int size) {
 		return this.map.setMapSize(size, size, players.length);
 	}
@@ -135,7 +129,8 @@ public class Game {
 			sb.append("<tr>");
 
 			for (int n = 0; n < map.getSize(); n++) {
-				Terrain type = p.isMapSeen(n, m) ? map.getTileType(n, m) : Terrain.UNKNOWN;
+				Terrain type = p.isMapSeen(n, m) ? map.getTileType(n, m)
+						: Terrain.UNKNOWN;
 				switch (type) {
 					case WATER: {
 						color = "0000FF";
@@ -170,15 +165,18 @@ public class Game {
 		FileWriter fw = null;
 		try {
 			for (int i = 0; i < players.length; i++) {
-				fw = new FileWriter(new File("map_player_" + i + ".html"), false);
-				fw.write("<html><head></head><body><h1>Player " + i	+ " map</h1>\n");
+				fw = new FileWriter(new File("map_player_" + i + ".html"),
+						false);
+				fw.write("<html><head></head><body><h1>Player " + i
+						+ " map</h1>\n");
 
 				fw.write(generatePlayerHTMLMap(players[i]));
-				
+
 				if (isEndGame()) {
 					fw.write("<p>Congratulations!!");
 					for (int z = 0; z < winners.size(); z++) {
-						fw.write(String.format("<br/>Player %d is a winner!", winners.get(z)));
+						fw.write(String.format("<br/>Player %d is a winner!",
+								winners.get(z)));
 					}
 					fw.write("</p>");
 				}

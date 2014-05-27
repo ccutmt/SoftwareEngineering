@@ -3,42 +3,17 @@ package com.pest.demo;
 import java.util.Scanner;
 
 public class GameRunner {
-	
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		Game gm = null;
 		boolean valid = false;
-                int no_teams = 0;
+		int no_teams = 0;
 		
-		do {
-			System.out.print("Do you want to play in collaborative mode? (Y/N)");
-			try {
-				switch(sc.next().charAt(0)) {
-					case 'Y' : ;
-					case 'y' :
-                                        {
-                                            System.out.print("Enter number of teams: ");
-                                            no_teams = sc.nextInt();
-                                            gm.setNumTeams(no_teams);
-								valid = true;
-								// TODO team code
-								break;
-                                        }
-					case 'N' : ;
-					case 'n' : 
-								valid = true;
-								break;
-					default : ;
-				}
-			} catch (Exception e) {
-				System.out.println("Something went wrong! Please try again.");
-				sc.next();
-			}
-		} while (!valid);
-
 		valid = false;
 		do {
-			System.out.print("Choose a map type:\n[1] Safe Map\n[2] Hazardous Map\n");
+			System.out
+					.print("Choose a map type:\n[1] Safe Map\n[2] Hazardous Map\n");
 			try {
 				gm = new Game(new Creator().createMap(sc.nextInt()));
 				valid = true;
@@ -63,7 +38,6 @@ public class GameRunner {
 			}
 		} while (!gm.setNumPlayers(no_players));
 
-		
 		int mapsize = 0;
 		// Read map size
 		do {
@@ -78,6 +52,35 @@ public class GameRunner {
 				sc.next();
 			}
 		} while (!gm.setMapSize(mapsize));
+		
+		do {
+			System.out
+					.print("Do you want to play in collaborative mode? (Y/N)");
+			try {
+				switch (sc.next().charAt(0)) {
+					case 'Y':
+						;
+					case 'y': {
+						System.out.print("Enter number of teams: ");
+						no_teams = sc.nextInt();
+						gm.setNumTeams(no_teams);
+						valid = true;
+						// TODO team code
+						break;
+					}
+					case 'N':
+						;
+					case 'n':
+						valid = true;
+						break;
+					default:
+						;
+				}
+			} catch (Exception e) {
+				System.out.println("Something went wrong! Please try again.");
+				sc.next();
+			}
+		} while (!valid);
 
 		gm.init();
 		gameLoop(gm, sc);
@@ -90,7 +93,8 @@ public class GameRunner {
 			System.out.println("Player: " + gm.getCurrentTurn());
 			System.out.println("Where do you want to go? (u,d,l,r)");
 			while (!gm.setNextMove(sc.next().charAt(0)))
-				System.out.println("Invalid input!\nWhere do you want to go? (u,d,l,r)");
+				System.out
+						.println("Invalid input!\nWhere do you want to go? (u,d,l,r)");
 		}
 	}
 }
