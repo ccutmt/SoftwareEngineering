@@ -10,6 +10,7 @@ public class Game {
 	private Player[] players = null;
 	private int turn = 0;
 	private boolean game_over = false;
+	private boolean team_play = false;
 	private Map map;
 	private Team[] teams = null;
 	private ArrayList<Integer> winners = new ArrayList<Integer>();
@@ -83,6 +84,7 @@ public class Game {
 		if (t > getNumPlayers())
 			return false;
 		teams = new Team[t];
+		team_play = true;
 		return true;
 	}
 
@@ -120,9 +122,11 @@ public class Game {
 	public void init() {
 		map.generate();
 		initPlayers();
-		initTeams();
-		setPlayersInTeams();
-		shareStart();
+		if(team_play){
+			initTeams();
+			setPlayersInTeams();
+			shareStart();
+		}
 		generateHTMLFiles();
 	}
 
