@@ -163,8 +163,8 @@ public class Game {
 
 			for (int n = 0; n < map.getSize(); n++) {
 				Terrain type = p.isMapSeen(n, m) ? map.getTileType(n, m)
-                                        : map.getTileType(n, m);
-						//: Terrain.UNKNOWN;
+                                        //: map.getTileType(n, m);
+						: Terrain.UNKNOWN;
 				switch (type) {
 					case WATER: {
 						color = "0000FF";
