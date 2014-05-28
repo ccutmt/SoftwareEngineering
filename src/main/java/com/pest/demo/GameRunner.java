@@ -59,17 +59,15 @@ public class GameRunner {
 			try {
 				switch (sc.next().charAt(0)) {
 					case 'Y':
-						;
 					case 'y': {
 						System.out.print("Enter number of teams: ");
 						no_teams = sc.nextInt();
-						gm.setNumTeams(no_teams);
-						valid = true;
-						// TODO team code
+						if(gm.setNumTeams(no_teams))
+							valid = true;
+						else valid = false;
 						break;
 					}
 					case 'N':
-						;
 					case 'n':
 						valid = true;
 						break;
