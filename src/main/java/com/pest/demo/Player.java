@@ -71,8 +71,11 @@ public class Player implements Observer {
 				&& p.getY() < player_map.length && p.getY() >= 0) {
 			position = p;
 			setMapSeen(p.getX(), p.getY());
-			team.setLatest(p);
-			team.notifyObservers();
+                        if(team != null)
+                        {
+                            team.setLatest(p);
+                            team.notifyObservers();
+                        }
 			return true;
 		} else
 			return false;
