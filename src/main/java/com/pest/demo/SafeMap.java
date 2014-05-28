@@ -21,7 +21,7 @@ public class SafeMap extends Map {
 		super.tiles = new Terrain[super.size][super.size];
 		Random rn = new Random();
 		int blue_count = 0;
-		int max_water = (int)0.1*(size*size);
+		int max_water = (int)(0.1*(size*size));
 		for(int i = 0; i< size; i++){
 			for(int j = 0; j < size; j++){
 				if((rn.nextInt(2) == 0) && (blue_count < max_water)){
@@ -31,6 +31,7 @@ public class SafeMap extends Map {
 				else tiles[i][j] = Terrain.LAND;
 			}
 		}
+		System.out.println(blue_count);
 		tiles[rn.nextInt(size)][rn.nextInt(size)] = Terrain.TREASURE;
 	}
 }
