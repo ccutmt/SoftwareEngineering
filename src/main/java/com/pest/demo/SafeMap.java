@@ -24,7 +24,7 @@ public class SafeMap extends Map {
 		int max_water = (int)0.1*(size*size);
 		for(int i = 0; i< size; i++){
 			for(int j = 0; j < size; j++){
-				if(rn.nextInt(2) == 0 && blue_count < max_water){
+				if((rn.nextInt(2) == 0) && (blue_count < max_water)){
 					tiles[i][j] = Terrain.WATER;
 					blue_count++;
 				}
