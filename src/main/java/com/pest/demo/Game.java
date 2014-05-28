@@ -163,7 +163,8 @@ public class Game {
 
 			for (int n = 0; n < map.getSize(); n++) {
 				Terrain type = p.isMapSeen(n, m) ? map.getTileType(n, m)
-						: Terrain.UNKNOWN;
+                                        : map.getTileType(n, m);
+						//: Terrain.UNKNOWN;
 				switch (type) {
 					case WATER: {
 						color = "0000FF";
@@ -207,10 +208,12 @@ public class Game {
 
 				if (isEndGame()) {
 					fw.write("<p>Congratulations!!");
+                                        if(team_play == false){
 					for (int z = 0; z < winners.size(); z++) {
 						fw.write(String.format("<br/>Player %d is a winner!",
 								winners.get(z)));
 					}
+                                        }
 					fw.write("</p>");
 				}
 				fw.write("</body></html>\n");
