@@ -31,7 +31,6 @@ public class SafeMap extends Map {
 				else tiles[i][j] = Terrain.LAND;
 			}
 		}
-		System.out.println(blue_count);
 		tiles[rn.nextInt(size)][rn.nextInt(size)] = Terrain.TREASURE;
 	}
 }
